@@ -126,6 +126,8 @@ export class NewNotaComponent implements OnInit {
       if(res[0]){
         this.ord = Number(res[0].orden);
         this.myForm.patchValue({orden: String(this.ord + 1).padStart(6, '0')});      
+      } else {
+        this.myForm.patchValue({orden: String(1).padStart(6, '0')});      
       }
     });
     /* this.formApi.GetNotasList().snapshotChanges().subscribe(data => {

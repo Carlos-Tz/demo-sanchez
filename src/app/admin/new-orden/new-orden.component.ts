@@ -129,6 +129,8 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       if(res[0]){
         this.ord = Number(res[0].orden);
         this.myForm.patchValue({orden: String(this.ord + 1).padStart(6, '0')});      
+      } else {
+        this.myForm.patchValue({orden: String(1).padStart(6, '0')});      
       }
     });
 
