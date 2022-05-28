@@ -4,6 +4,7 @@ export interface Orden {
     correo: string;
     marca: string;
     modelo: string;
+    anio: string;
     color: string;
     km: string;
     placas: string;

@@ -252,6 +252,7 @@ export class EditOrdenComponent implements OnInit {
       orden: ['', [Validators.required]],
       marca: [''],
       modelo: [''],
+      anio: [''],
       color: [''],
       km: [''],
       placas: [''],
@@ -475,13 +476,13 @@ export class EditOrdenComponent implements OnInit {
     this.myForm.patchValue({izq: this.signaturePad4.toData()});
   }
   clear1() {
-    this.signaturePad.off();
-    /* this.signaturePad.clear(); */
+    //this.signaturePad.off();
+    this.signaturePad.clear();
     this.myForm.patchValue({dere: []});
   }
 
   clear2() {
-    this.signaturePad.on();
+    //this.signaturePad.on();
     this.signaturePad2.clear();
     this.myForm.patchValue({frente: []});
   }
