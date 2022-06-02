@@ -11,6 +11,8 @@ import { finalize } from 'rxjs/operators';
 import { CurrencyPipe } from '@angular/common';
 import { Form } from 'src/app/models/form';
 import {NgForm} from '@angular/forms';
+//import * as $ from 'jquery'
+declare let $: any;
 
 @Component({
   selector: 'app-new-orden',
@@ -93,6 +95,10 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     canvasHeight: 125 // 125
   };
   save = 2;
+  dato = '';
+  datos_n: any;
+  datos_t: any;
+  datos_c: any;
   forms: Form[];
   ff = new Date;
   myForm: FormGroup;
@@ -117,6 +123,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.sForm();
+    this.formApi.GetOrdenesList();
     this.formApi.GetFormsList().snapshotChanges().subscribe(data => {
       this.forms = [];
       data.forEach(item => {
@@ -124,6 +131,9 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         form['$key'] = item.key;
         this.forms.push(form as Form);
       });
+      /* this.forms.sort((a, b) => {
+        return a.nombre - b.nombre;
+      }) */
     });
     this.formApi.getLastOrden().subscribe(res=> {
       if(res[0]){
@@ -133,7 +143,42 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         this.myForm.patchValue({orden: String(1).padStart(6, '0')});      
       }
     });
+    $("#contSign").each(function (){ this.style.pointerEvents = 'none'; });
+    $("#contSign2").each(function (){ this.style.pointerEvents = 'none'; });
+    $("#contSign3").each(function (){ this.style.pointerEvents = 'none'; });
+    $("#contSign4").each(function (){ this.style.pointerEvents = 'none'; });
+    /*$('.select2').select2();
+    $('#nnombre').on('select2:select', function (e) {
+      var data = e.params.data; 
+      //console.log(data);
+      //console.log(data.element.__ngContext__);
+      //console.log(data.element.__ngContext__[22]);
+      //this.myForm.patchValue({correo: this.save});    
+      $('#id').val(data.id).trigger('change');
+      $('#nombre').val(data.element.__ngContext__[22].nombre).trigger('change');
+      $('#tel').val(data.element.__ngContext__[22].tel).trigger('change');
+      $('#correo').val(data.element.__ngContext__[22].email).trigger('change');
+      //return data.element.__ngContext__[22];
+    });
+    this.datos_n = $('#nombre').change(function() {
+      //console.log(this.value);
+      return this.value;
+      //this.nameS(this.value);
+    });
+    this.datos_t = $('#tel').change(function() {
+      //console.log(this.value);
+      return this.value;
+      //this.nameS(this.value);
+    });
+    this.datos_c = $('#correo').change(function() {
+      //console.log(this.value);
+      return this.value;
+      //this.nameS(this.value);
+    });
 
+    this.myForm.get('nombre').valueChanges.subscribe(selectedValue => {
+      console.log(selectedValue);
+    }) */
     /* this.formApi.GetOrdenesList().snapshotChanges().subscribe(data => {
       this.ord = data.length + 1;
       this.myForm.patchValue({orden: String(this.ord).padStart(6, '0')});
@@ -142,59 +187,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     this.myForm.patchValue({ fecha: this.fecha });
     this.ingresoC = this.ff.getFullYear() + '-' + ('0' + (this.ff.getMonth() + 1)).slice(-2) + '-' + ('0' + this.ff.getDate()).slice(-2);
   }
-
+  
   ngAfterViewInit() {
     this.signaturePad.off();
     this.signaturePad2.off();
     this.signaturePad3.off();
     this.signaturePad4.off();
   }
-
-  /* private generRow() {
-    for (let i = 1; i < 17; i++) {
-      this.addUnit();
-    }
-  } */
-  /* private getUnit() {
-    return this.fb.group({
-      cantidad: [''],
-      importe: [''],
-      desc: [''],
-      subtotal: [''],
-      noparte: ['']
-    });
-  } */
-  /* private updateTotalUnitPrice(units: any) {
-    const control = this.myForm.controls['units'] as FormArray;
-    this.totalr = 0;
-    // tslint:disable-next-line: forin
-    for (let i in units) {
-      let totalUnitPrice = 0;
-      totalUnitPrice = ((units[i].cantidad > 0 && units[i].importe > 0) ? units[i].cantidad * units[i].importe : 0);
-      //totalUnitPrice += (units[i].cantidad ? units[i].cantidad : 0);
-      //totalUnitPrice += (units[i].importe ? units[i].importe : 0);
-      //totalUnitPrice += (units[i].pintura ? units[i].pintura : 0);
-      //totalUnitPrice += (units[i].glo ? units[i].glo : 0);
-      const totalUnitPriceFormatted = this.currencyPipe.transform(totalUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
-
-      if (totalUnitPrice !== 0) {
-        control.at(+i).get('subtotal').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
-      } else {
-        control.at(+i).get('subtotal').setValue('', {onlySelf: true, emitEvent: false});
-      }
-      this.totalr += totalUnitPrice;
-    }
-    this.subtotal = this.totalr + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
-    this.iva = Math.round(this.subtotal * 0.16);
-    this.total = this.subtotal + this.iva;
-    this.saldo = this.total - this.anticipo;
-    //this.iva = Math.round(this.totalr * 0.16);
-    //this.total = this.totalr + this.iva;
-  } */
-  /* private addUnit() {
-    const control = this.myForm.controls['units'] as FormArray;
-    control.push(this.getUnit());
-  } */
 
   sForm() {
     this.myForm = this.fb.group({
@@ -248,6 +247,8 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       izq: [''],
       firma1: [''],
       firma2: [''],
+      firma1n: [''],
+      firma2n: [''],
       img1: [''],
       img2: [''],
       img3: [''],
@@ -256,6 +257,14 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       img6: [''],
       img7: [''],
       img8: [''],
+      img1n: [''],
+      img2n: [''],
+      img3n: [''],
+      img4n: [''],
+      img5n: [''],
+      img6n: [''],
+      img7n: [''],
+      img8n: [''],
       desc1: [''],
       desc2: [''],
       desc3: [''],
@@ -264,23 +273,9 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       desc6: [''],
       desc7: [''],
       desc8: [''],
-      firma3: [''],
-      firma4: [''],
+      firma3n: [''],
+      firma4n: [''],
       fecha: ['']
-      /* dato1: [''],
-      dato2: [''],
-      dato3: [''],
-      dato4: [''],
-      dato5: [''],
-      manoo: [0],
-      cargos: [0],
-      seguro: [0],
-      otrosm: [0],
-      antici: [0],
-      iva: [false],
-      units: this.fb.array([
-        this.getUnit()
-      ]) */
     });
   }
 
@@ -333,6 +328,19 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
   }
 
   nameS(ev) {
+    /* console.log(this.datos_n[0].value);
+    console.log(this.datos_t[0].value);
+    console.log(this.datos_c[0].value); */
+    /* this.myForm.patchValue({correo: this.datos_c[0].value});
+    this.myForm.patchValue({tel: this.datos_t[0].value});
+    this.myForm.patchValue({nombre: this.datos_n[0].value});
+    this.nameC = this.datos_n[0].value; */
+    //console.log(ev);
+    //alert(this.myForm.get('correo').value);
+    /* console.log($('#nombre'))
+    console.log(this.myForm.get('correo').value);
+    console.log(this.myForm.get('nombre').value);
+    console.log(this.myForm.get('tel').value); */
     /* this.needleValue = ev.srcElement.value; */
     this.formApi.GetForm(ev.srcElement.value).valueChanges().subscribe(data => {
       if (data.nombre && data.tel && data.email){
@@ -340,10 +348,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         this.myForm.patchValue({tel: data.tel});
         this.myForm.patchValue({nombre: data.nombre});
         this.nameC = data.nombre;
-        /* console.log(data.email);
-        console.log(data.tel); */
       }
-      /* this.myForm.patchValue(data); */
     });
   }
 
@@ -406,11 +411,19 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
   lock_() {
     this.lock = !this.lock;
     if (this.lock){
+      $("#contSign").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign2").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign3").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign4").each(function (){ this.style.pointerEvents = 'none'; });
       this.signaturePad.off();
       this.signaturePad2.off();
       this.signaturePad3.off();
       this.signaturePad4.off();
     }else{
+      $("#contSign").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign2").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign3").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign4").each(function (){ this.style.pointerEvents = 'auto'; });
       this.signaturePad.on();
       this.signaturePad2.on();
       this.signaturePad3.on();
@@ -457,14 +470,6 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     this.readThis($event.target);
   }
 
-  /* updt() {
-    //this.subtotal = this.totalRef + this.obra + this.otros;
-    this.subtotal = this.totalr + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
-    this.iva = Math.round(this.subtotal * 0.16);
-    this.total = this.subtotal + this.iva;
-    this.saldo = this.total - this.myForm.get('antici').value;
-  } */
-
   readThis(inputValue: any): void {
     const ima = inputValue.files[0]; 
     const reader = new FileReader();
@@ -483,12 +488,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI1);
           ref.delete();
         }
-        this.filePathI1 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI1 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI1);
         this.storage.upload(this.filePathI1, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img1: url});
+              this.myForm.patchValue({img1n: this.filePathI1});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -499,12 +505,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
             const ref = this.storage.ref(this.filePathI2);
             ref.delete();
           }
-          this.filePathI2 = `images_afinauto/image_${Date.now()}`;
+          this.filePathI2 = `images_servicar/image_${Date.now()}`;
           const fileRef = this.storage.ref(this.filePathI2);
           this.storage.upload(this.filePathI2, this.uploadedImage).snapshotChanges().pipe(
             finalize(() => {
               fileRef.getDownloadURL().subscribe((url) => {
                 this.myForm.patchValue({img2: url});
+                this.myForm.patchValue({img2n: this.filePathI2});
                 this.toastr.success('Imagen cargada correctamente!');
               });
             })
@@ -515,12 +522,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI3);
           ref.delete();
         }
-        this.filePathI3 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI3 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI3);
         this.storage.upload(this.filePathI3, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img3: url});
+              this.myForm.patchValue({img3n: this.filePathI3});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -531,12 +539,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI4);
           ref.delete();
         }
-        this.filePathI4 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI4 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI4);
         this.storage.upload(this.filePathI4, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img4: url});
+              this.myForm.patchValue({img4n: this.filePathI4});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -547,12 +556,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI5);
           ref.delete();
         }
-        this.filePathI5 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI5 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI5);
         this.storage.upload(this.filePathI5, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img5: url});
+              this.myForm.patchValue({img5n: this.filePathI5});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -563,12 +573,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI6);
           ref.delete();
         }
-        this.filePathI6 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI6 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI6);
         this.storage.upload(this.filePathI6, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img6: url});
+              this.myForm.patchValue({img6n: this.filePathI6});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -579,12 +590,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI7);
           ref.delete();
         }
-        this.filePathI7 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI7 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI7);
         this.storage.upload(this.filePathI7, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img7: url});
+              this.myForm.patchValue({img7n: this.filePathI7});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -595,12 +607,13 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI8);
           ref.delete();
         }
-        this.filePathI8 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI8 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI8);
         this.storage.upload(this.filePathI8, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img8: url});
+              this.myForm.patchValue({img8n: this.filePathI8});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -617,13 +630,17 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const contentType = block[0].split(':')[1];
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
-      /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf1 = `signs_afinauto/image_${Date.now()}`;
+      if (this.filePathf1 !== '') {
+        const ref = this.storage.ref(this.filePathf1);
+          ref.delete();
+      }
+      this.filePathf1 = `signs_servicar/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf1);
       this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.myForm.patchValue({firma1: url});
+            this.myForm.patchValue({firma1n: this.filePathf1});
             this.toastr.success('Firma Actualizada!');
           });
         })
@@ -637,13 +654,17 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const contentType = block[0].split(':')[1];
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
-      /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf2 = `signs_afinauto/image_${Date.now()}`;
+      if (this.filePathf2 !== '') {
+        const ref = this.storage.ref(this.filePathf2);
+          ref.delete();
+      }
+      this.filePathf2 = `signs_servicar/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf2);
       this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.myForm.patchValue({firma2: url});
+            this.myForm.patchValue({firma2n: this.filePathf2});
             this.toastr.success('Firma Actualizada!');
           });
         })
@@ -657,13 +678,17 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const contentType = block[0].split(':')[1];
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
-      /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf3 = `signs_afinauto/image_${Date.now()}`;
+      if (this.filePathf3 !== '') {
+        const ref = this.storage.ref(this.filePathf3);
+          ref.delete();
+      }
+      this.filePathf3 = `signs_servicar/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf3);
       this.storage.upload(this.filePathf3, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.myForm.patchValue({firma3: url});
+            this.myForm.patchValue({firma3n: this.filePathf3});
             this.toastr.success('Firma Actualizada!');
           });
         })
@@ -677,13 +702,17 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       const contentType = block[0].split(':')[1];
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
-      /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf4 = `signs_afinauto/image_${Date.now()}`;
+      if (this.filePathf4 !== '') {
+        const ref = this.storage.ref(this.filePathf4);
+          ref.delete();
+      }
+      this.filePathf4 = `signs_servicar/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf4);
       this.storage.upload(this.filePathf4, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.myForm.patchValue({firma4: url});
+            this.myForm.patchValue({firma4n: this.filePathf4});
             this.toastr.success('Firma Actualizada!');
           });
         })

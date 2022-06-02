@@ -114,6 +114,7 @@ export class NewNotaComponent implements OnInit {
 
   ngOnInit() {
     this.sForm();
+    this.formApi.GetNotasList();
     this.formApi.GetFormsList().snapshotChanges().subscribe(data => {
       this.forms = [];
       data.forEach(item => {
@@ -226,6 +227,7 @@ export class NewNotaComponent implements OnInit {
       transferencia: [false],
       presupuesto: [false],
       firma1: [''],
+      firma1n: [''],
       fecha: [''],
       antici: [0],
       iva: [false],
@@ -325,13 +327,17 @@ export class NewNotaComponent implements OnInit {
       const contentType = block[0].split(':')[1];
       const realData = block[1].split(',')[1];
       const blob = this.b64toBlob(realData, contentType);
-      /* const filePath = `signs/image_${Date.now()}`; */
-      this.filePathf1 = `signs_afinauto/image_${Date.now()}`;
+      if (this.filePathf1 !== '') {
+        const ref = this.storage.ref(this.filePathf1);
+          ref.delete();
+      }
+      this.filePathf1 = `signs_servicar/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf1);
       this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.myForm.patchValue({firma1: url});
+            this.myForm.patchValue({firma1n: this.filePathf1});
             this.toastr.success('Firma Actualizada!');
           });
         })

@@ -49,6 +49,8 @@ export interface Orden {
     izq: string;
     firma1: string;
     firma2: string;
+    firma1n: string;
+    firma2n: string;
     img1: string;
     img2: string;
     img3: string;
@@ -57,6 +59,14 @@ export interface Orden {
     img6: string;
     img7: string;
     img8: string;
+    img1n: string;
+    img2n: string;
+    img3n: string;
+    img4n: string;
+    img5n: string;
+    img6n: string;
+    img7n: string;
+    img8n: string;
     desc1: string;
     desc2: string;
     desc3: string;
@@ -67,17 +77,7 @@ export interface Orden {
     desc8: string;
     firma3: string;
     firma4: string;
+    firma3n: string;
+    firma4n: string;
     fecha: string;
-    /* dato1: string;
-    dato2: string;
-    dato3: string;
-    dato4: string;
-    dato5: string;
-    manoo: number;
-    cargos: number;
-    seguro: number;
-    otrosm: number;
-    antici: number;
-    iva: boolean;
-    units: Unit[]; */
 }

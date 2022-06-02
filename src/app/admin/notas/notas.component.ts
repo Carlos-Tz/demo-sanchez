@@ -9,6 +9,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NewRegisterComponent } from '../new-register/new-register.component';
 import { EditRegisterComponent } from '../edit-register/edit-register.component';
 import { Nota } from 'src/app/models/nota';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-notas',
@@ -34,7 +35,7 @@ export class NotasComponent implements OnInit, AfterViewInit {
     'action'
   ];
   constructor(
-    public api: ApiService, private matDialog: MatDialog
+    public api: ApiService, private matDialog: MatDialog, public toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -88,9 +89,11 @@ export class NotasComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  deleteNota(key: string){
+  async deleteNota(key: string){
     if (window.confirm('¿Esta seguro de eliminar el registro seleccionado?')) {
-      this.api.DeleteNota(key);
+      await this.api.DeleteNota(key);
+      this.toastr.success('Registro Eliminado!');
+      window.location.reload();
     }
   }
 

@@ -9,6 +9,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NewRegisterComponent } from '../new-register/new-register.component';
 import { EditRegisterComponent } from '../edit-register/edit-register.component';
 import { Orden } from 'src/app/models/orden';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ordenes',
@@ -33,8 +34,7 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
     'action'
   ];
   constructor(
-    public api: ApiService, private matDialog: MatDialog
-  ) { }
+    public api: ApiService, private matDialog: MatDialog, public toastr: ToastrService  ) { }
 
   ngOnInit() {
     this.api.GetOrdenesList().snapshotChanges().subscribe(data => {
@@ -88,9 +88,11 @@ export class OrdenesComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  deleteOrden(key: string){
+  async deleteOrden(key: string){
     if (window.confirm('¿Esta seguro de eliminar el registro seleccionado?')) {
-      this.api.DeleteOrden(key);
+      await this.api.DeleteOrden(key);
+      this.toastr.success('Registro Eliminado!');
+      window.location.reload();
     }
   }
 

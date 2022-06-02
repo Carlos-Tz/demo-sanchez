@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad/angular2-signaturepad';
 import 'fecha';
 import fechaObj from 'fecha';
@@ -12,13 +12,15 @@ import { CurrencyPipe } from '@angular/common';
 import { Form } from 'src/app/models/form';
 import {NgForm} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+declare let $: any;
+
 
 @Component({
   selector: 'app-edit-orden',
   templateUrl: './edit-orden.component.html',
   styleUrls: ['./edit-orden.component.css']
 })
-export class EditOrdenComponent implements OnInit {
+export class EditOrdenComponent implements OnInit, AfterViewInit {
 
   public canvasWidth = 180;
   public needleValue = 50;
@@ -62,7 +64,7 @@ export class EditOrdenComponent implements OnInit {
   /* public tal = false;
   public pre = false;
   public vol = false; */
-  public lock = false;
+  public lock = true;
   public fecha = '';
   public nameC = '';
   public ingresoC = '';
@@ -171,8 +173,12 @@ export class EditOrdenComponent implements OnInit {
         this.tem = this.myForm.get('temper').value;
       }
       if (this.myForm.get('lock').value) {
-        this.lock = this.myForm.get('lock').value;
+        this.lock = true;
       }
+      $("#contSign").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign2").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign3").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign4").each(function (){ this.style.pointerEvents = 'none'; });
     });
     this.formApi.GetFormsList().snapshotChanges().subscribe(data => {
       this.forms = [];
@@ -182,69 +188,14 @@ export class EditOrdenComponent implements OnInit {
         this.forms.push(form as Form);
       });
     });
-    /*this.formApi.GetOrdenesList().snapshotChanges().subscribe(data => {
-      this.ord = data.length + 1;
-      //this.myForm.patchValue({orden: this.ord});
-      this.myForm.patchValue({orden: String(this.ord).padStart(6, '0')});
-     
-    }); */
-    //this.fecha = fechaObj.format(new Date(), 'D [/] MM [/] YYYY');
-    //this.myForm.patchValue({ fecha: this.fecha });
-    /* this.myForm.patchValue({ ingreso: new Date() }); */
-    //this.myForm.patchValue({ ingreso: this.ff.getFullYear() + '-' + ('0' + (this.ff.getMonth() + 1)).slice(-2) + '-' + ('0' + this.ff.getDate()).slice(-2) });
-    //this.ingresoC = this.ff.getFullYear() + '-' + ('0' + (this.ff.getMonth() + 1)).slice(-2) + '-' + ('0' + this.ff.getDate()).slice(-2);
-    /* this.generRow();
-    this.myformValuesChanges$ = this.myForm.controls['units'].valueChanges;
-    this.myformValuesChanges$.subscribe(units => {
-      this.updateTotalUnitPrice(units);
-    }); */
   }
 
-  /* private generRow() {
-    for (let i = 1; i < 17; i++) {
-      this.addUnit();
-    }
-  } */
-  /* private getUnit() {
-    return this.fb.group({
-      cantidad: [''],
-      importe: [''],
-      desc: [''],
-      subtotal: [''],
-      noparte: ['']
-    });
-  } */
-  /* private updateTotalUnitPrice(units: any) {
-    const control = this.myForm.controls['units'] as FormArray;
-    this.totalr = 0;
-    // tslint:disable-next-line: forin
-    for (let i in units) {
-      let totalUnitPrice = 0;
-      totalUnitPrice = ((units[i].cantidad > 0 && units[i].importe > 0) ? units[i].cantidad * units[i].importe : 0);
-      //totalUnitPrice += (units[i].cantidad ? units[i].cantidad : 0);
-      //totalUnitPrice += (units[i].importe ? units[i].importe : 0);
-      //totalUnitPrice += (units[i].pintura ? units[i].pintura : 0);
-      //totalUnitPrice += (units[i].glo ? units[i].glo : 0);
-      const totalUnitPriceFormatted = this.currencyPipe.transform(totalUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
-
-      if (totalUnitPrice !== 0) {
-        control.at(+i).get('subtotal').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
-      } else {
-        control.at(+i).get('subtotal').setValue('', {onlySelf: true, emitEvent: false});
-      }
-      this.totalr += totalUnitPrice;
-    }
-    this.subtotal = this.totalr + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
-    this.iva = Math.round(this.subtotal * 0.16);
-    this.total = this.subtotal + this.iva;
-    this.saldo = this.total - this.anticipo;
-    //this.iva = Math.round(this.totalr * 0.16);
-    //this.total = this.totalr + this.iva;
-  } */
-  /* private addUnit() {
-    const control = this.myForm.controls['units'] as FormArray;
-    control.push(this.getUnit());
-  } */
+  ngAfterViewInit() {
+    this.signaturePad.off();
+    this.signaturePad2.off();
+    this.signaturePad3.off();
+    this.signaturePad4.off();
+  }
 
   sForm() {
     this.myForm = this.fb.group({
@@ -277,7 +228,7 @@ export class EditOrdenComponent implements OnInit {
       /* tall: [false],
       presion: [false],
       volante: [false], */
-      lock: [false],
+      lock: [true],
       gato: [false],
       antena: [false],
       herrami: [false],
@@ -298,6 +249,8 @@ export class EditOrdenComponent implements OnInit {
       izq: [''],
       firma1: [''],
       firma2: [''],
+      firma1n: [''],
+      firma2n: [''],
       img1: [''],
       img2: [''],
       img3: [''],
@@ -306,6 +259,14 @@ export class EditOrdenComponent implements OnInit {
       img6: [''],
       img7: [''],
       img8: [''],
+      img1n: [''],
+      img2n: [''],
+      img3n: [''],
+      img4n: [''],
+      img5n: [''],
+      img6n: [''],
+      img7n: [''],
+      img8n: [''],
       desc1: [''],
       desc2: [''],
       desc3: [''],
@@ -316,21 +277,9 @@ export class EditOrdenComponent implements OnInit {
       desc8: [''],
       firma3: [''],
       firma4: [''],
+      firma3n: [''],
+      firma4n: [''],
       fecha: ['']
-      /* dato1: [''],
-      dato2: [''],
-      dato3: [''],
-      dato4: [''],
-      dato5: [''],
-      manoo: [0],
-      cargos: [0],
-      seguro: [0],
-      otrosm: [0],
-      antici: [0],
-      iva: [false],
-      units: this.fb.array([
-        this.getUnit()
-      ]) */
     });
   }
 
@@ -342,35 +291,7 @@ export class EditOrdenComponent implements OnInit {
     this.formApi.UpdateOrden(this.myForm.value, this.key);
     /* this.formApi.AddOrden(this.myForm.value); */
     this.toastr.success('Actualizar!');
-    /* this.needleValue = 50;
-    this.ResetForm();
-    this.clear1();
-    this.clear2();
-    this.clear3();
-    this.clear4();
-    this.sForm2(); */
   }
-  /* sForm2() {
-    this.myForm.patchValue({fecha: this.fecha});
-    this.myForm.patchValue({tcar: 'sedan'});
-    this.myForm.patchValue({gas: 50});
-    this.myForm.patchValue({dere: []});
-    this.myForm.patchValue({frente: []});
-    this.myForm.patchValue({detras: []});
-    this.myForm.patchValue({izq: []});
-    this.myForm.patchValue({nombre: ''});
-    this.air = false;
-    this.eng = false;
-    this.abs = false;
-    this.oil = false;
-    this.bat = false;
-    this.cin = false;
-    this.fre = false;
-    this.lig = false;
-    this.sta = false;
-    this.tem = false;
-    this.lock = false;
-  } */
 
   combus(ev) {
     this.needleValue = ev.srcElement.value;
@@ -450,11 +371,19 @@ export class EditOrdenComponent implements OnInit {
   lock_() {
     this.lock = !this.lock;
     if (this.lock){
+      $("#contSign").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign2").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign3").each(function (){ this.style.pointerEvents = 'none'; });
+      $("#contSign4").each(function (){ this.style.pointerEvents = 'none'; });
       this.signaturePad.off();
       this.signaturePad2.off();
       this.signaturePad3.off();
       this.signaturePad4.off();
     }else{
+      $("#contSign").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign2").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign3").each(function (){ this.style.pointerEvents = 'auto'; });
+      $("#contSign4").each(function (){ this.style.pointerEvents = 'auto'; });
       this.signaturePad.on();
       this.signaturePad2.on();
       this.signaturePad3.on();
@@ -527,12 +456,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI1);
           ref.delete();
         }
-        this.filePathI1 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI1 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI1);
         this.storage.upload(this.filePathI1, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img1: url});
+              this.myForm.patchValue({img1n: this.filePathI1});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -543,12 +473,13 @@ export class EditOrdenComponent implements OnInit {
             const ref = this.storage.ref(this.filePathI2);
             ref.delete();
           }
-          this.filePathI2 = `images_afinauto/image_${Date.now()}`;
+          this.filePathI2 = `images_servicar/image_${Date.now()}`;
           const fileRef = this.storage.ref(this.filePathI2);
           this.storage.upload(this.filePathI2, this.uploadedImage).snapshotChanges().pipe(
             finalize(() => {
               fileRef.getDownloadURL().subscribe((url) => {
                 this.myForm.patchValue({img2: url});
+              this.myForm.patchValue({img1n: this.filePathI2});
                 this.toastr.success('Imagen cargada correctamente!');
               });
             })
@@ -559,12 +490,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI3);
           ref.delete();
         }
-        this.filePathI3 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI3 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI3);
         this.storage.upload(this.filePathI3, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img3: url});
+              this.myForm.patchValue({img1n: this.filePathI3});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -575,12 +507,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI4);
           ref.delete();
         }
-        this.filePathI4 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI4 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI4);
         this.storage.upload(this.filePathI4, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img4: url});
+              this.myForm.patchValue({img1n: this.filePathI4});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -591,12 +524,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI5);
           ref.delete();
         }
-        this.filePathI5 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI5 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI5);
         this.storage.upload(this.filePathI5, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img5: url});
+              this.myForm.patchValue({img1n: this.filePathI5});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -607,12 +541,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI6);
           ref.delete();
         }
-        this.filePathI6 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI6 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI6);
         this.storage.upload(this.filePathI6, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img6: url});
+              this.myForm.patchValue({img1n: this.filePathI6});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -623,12 +558,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI7);
           ref.delete();
         }
-        this.filePathI7 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI7 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI7);
         this.storage.upload(this.filePathI7, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img7: url});
+              this.myForm.patchValue({img1n: this.filePathI7});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -639,12 +575,13 @@ export class EditOrdenComponent implements OnInit {
           const ref = this.storage.ref(this.filePathI8);
           ref.delete();
         }
-        this.filePathI8 = `images_afinauto/image_${Date.now()}`;
+        this.filePathI8 = `images_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI8);
         this.storage.upload(this.filePathI8, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({img8: url});
+              this.myForm.patchValue({img1n: this.filePathI8});
               this.toastr.success('Imagen cargada correctamente!');
             });
           })
@@ -662,13 +599,17 @@ export class EditOrdenComponent implements OnInit {
         const contentType = block[0].split(':')[1];
         const realData = block[1].split(',')[1];
         const blob = this.b64toBlob(realData, contentType);
-        /* const filePath = `signs/image_${Date.now()}`; */
-        this.filePathf1 = `signs_afinauto/image_${Date.now()}`;
+        if (this.filePathf1 !== '') {
+          const ref = this.storage.ref(this.filePathf1);
+            ref.delete();
+        }
+        this.filePathf1 = `signs_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathf1);
         this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma1: url});
+              this.myForm.patchValue({firma1n: this.filePathf1});
               this.toastr.success('Firma Actualizada!');
             });
           })
@@ -684,13 +625,17 @@ export class EditOrdenComponent implements OnInit {
         const contentType = block[0].split(':')[1];
         const realData = block[1].split(',')[1];
         const blob = this.b64toBlob(realData, contentType);
-        /* const filePath = `signs/image_${Date.now()}`; */
-        this.filePathf2 = `signs_afinauto/image_${Date.now()}`;
+        if (this.filePathf2 !== '') {
+          const ref = this.storage.ref(this.filePathf2);
+            ref.delete();
+        }
+        this.filePathf2 = `signs_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathf2);
         this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma2: url});
+              this.myForm.patchValue({firma1n: this.filePathf2});
               this.toastr.success('Firma Actualizada!');
             });
           })
@@ -706,13 +651,17 @@ export class EditOrdenComponent implements OnInit {
         const contentType = block[0].split(':')[1];
         const realData = block[1].split(',')[1];
         const blob = this.b64toBlob(realData, contentType);
-        /* const filePath = `signs/image_${Date.now()}`; */
-        this.filePathf3 = `signs_afinauto/image_${Date.now()}`;
+        if (this.filePathf3 !== '') {
+          const ref = this.storage.ref(this.filePathf3);
+            ref.delete();
+        }
+        this.filePathf3 = `signs_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathf3);
         this.storage.upload(this.filePathf3, blob).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma3: url});
+              this.myForm.patchValue({firma1n: this.filePathf3});
               this.toastr.success('Firma Actualizada!');
             });
           })
@@ -728,13 +677,17 @@ export class EditOrdenComponent implements OnInit {
         const contentType = block[0].split(':')[1];
         const realData = block[1].split(',')[1];
         const blob = this.b64toBlob(realData, contentType);
-        /* const filePath = `signs/image_${Date.now()}`; */
-        this.filePathf4 = `signs_afinauto/image_${Date.now()}`;
+        if (this.filePathf4 !== '') {
+          const ref = this.storage.ref(this.filePathf4);
+            ref.delete();
+        }
+        this.filePathf4 = `signs_servicar/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathf4);
         this.storage.upload(this.filePathf4, blob).snapshotChanges().pipe(
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma4: url});
+              this.myForm.patchValue({firma1n: this.filePathf4});
               this.toastr.success('Firma Actualizada!');
             });
           })

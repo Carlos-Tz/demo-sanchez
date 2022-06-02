@@ -19,5 +19,6 @@ export interface Nota {
     efectivo: boolean;
     transferencia: boolean;
     firma1: string;
+    firma1n: string;
     units: Unit[];
 }
