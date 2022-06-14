@@ -635,7 +635,7 @@ export class EditOrdenComponent implements OnInit, AfterViewInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma2: url});
-              this.myForm.patchValue({firma1n: this.filePathf2});
+              this.myForm.patchValue({firma2n: this.filePathf2});
               this.toastr.success('Firma Actualizada!');
             });
           })
@@ -661,7 +661,7 @@ export class EditOrdenComponent implements OnInit, AfterViewInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma3: url});
-              this.myForm.patchValue({firma1n: this.filePathf3});
+              this.myForm.patchValue({firma3n: this.filePathf3});
               this.toastr.success('Firma Actualizada!');
             });
           })
@@ -687,7 +687,7 @@ export class EditOrdenComponent implements OnInit, AfterViewInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe((url) => {
               this.myForm.patchValue({firma4: url});
-              this.myForm.patchValue({firma1n: this.filePathf4});
+              this.myForm.patchValue({firma4n: this.filePathf4});
               this.toastr.success('Firma Actualizada!');
             });
           })

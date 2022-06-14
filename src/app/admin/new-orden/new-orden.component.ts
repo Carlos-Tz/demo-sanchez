@@ -273,6 +273,8 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
       desc6: [''],
       desc7: [''],
       desc8: [''],
+      firma3: [''],
+      firma4: [''],
       firma3n: [''],
       firma4n: [''],
       fecha: ['']
