@@ -164,3 +164,13 @@ document.addEventListener('keypress', function(evt) {
       event.preventDefault();
     }
   });
+
+  function trabajo(){
+    var trab = document.getElementById('trabajo_');
+    trab.style.display = "none";
+  }
+
+  function s_trabajo(){
+    var trab = document.getElementById('trabajo_');
+    trab.style.display = "block";
+  }

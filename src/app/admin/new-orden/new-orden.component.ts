@@ -106,6 +106,32 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     tcar: 'sedan',
     gas: 50
   };
+  bal__ = '';
+  afi__ = '';
+  dis__ = '';
+  tam__ = '';
+  fre__ = '';
+  ali__ = '';
+  bala__ = '';
+  mon__ = '';
+  rot__ = '';
+  onz__ = '';
+  val__ = '';
+  car__ = '';
+  cha__ = '';
+  mot__ = '';
+  eng__ = '';
+  sop__ = '';
+  ace__ = '';
+  a140__ = '';
+  tra__ = '';
+  fil__ = '';
+  fila__ = '';
+  adi__ = '';
+  trabajos = '';
+  s1 = '';
+  s2 = '';
+  s3 = '';
 
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
     // console.log('Processing beforeunload...');
@@ -354,6 +380,162 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     });
   }
 
+  addTrabajo(ev){
+    console.log(ev.target.checked);
+    console.log(ev.srcElement.value);
+  }
+
+  ser(){
+    if(this.bal__ || this.afi__ || this.dis__ || this.tam__ || this.fre__){
+      this.s1 = 'SERVICIO MECÁNICO: ';
+    }else {
+      this.s1 = '';
+    }
+    if(this.ali__ || this.bala__ || this.mon__ || this.rot__ || this.onz__ || this.val__){
+      this.s2 = 'SERVICIO DE ALINEACIÓN Y BALANCEO: ';
+    }else {
+      this.s2 = '';
+    }
+    if(this.car__ || this.mot__ || this.eng__ || this.sop__ || this.ace__ || this.a140__ || this.tra__ || this.fil__ || this.fila__ || this.adi__){
+      this.s3 = 'SERVICIO DE LAVADO Y ENGRASADO: ';
+    }else {
+      this.s3 = '';
+    }
+  }
+
+  addBal(ev){
+    if(ev.target.checked) this.bal__ = ev.srcElement.value + ', ';
+    else this.bal__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addAfi(ev){
+    if(ev.target.checked) this.afi__ = ev.srcElement.value + ', ';
+    else this.afi__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addDis(ev){
+    if(ev.target.checked) this.dis__ = ev.srcElement.value + ', ';
+    else this.dis__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addTam(ev){
+    if(ev.target.checked) this.tam__ = ev.srcElement.value + ', ';
+    else this.tam__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addFre(ev){
+    if(ev.target.checked) this.fre__ = ev.srcElement.value + ', ';
+    else this.fre__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addAli(ev){
+    if(ev.target.checked) this.ali__ = ev.srcElement.value + ', ';
+    else this.ali__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addBala(ev){
+    if(ev.target.checked) this.bala__ = ev.srcElement.value + ', ';
+    else this.bala__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addMon(ev){
+    if(ev.target.checked) this.mon__ = ev.srcElement.value + ', ';
+    else this.mon__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addRot(ev){
+    if(ev.target.checked) this.rot__ = ev.srcElement.value + ', ';
+    else this.rot__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addOnz(ev){
+    if(ev.target.checked) this.onz__ = ev.srcElement.value + ', ';
+    else this.onz__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addVal(ev){
+    if(ev.target.checked) this.val__ = ev.srcElement.value + ', ';
+    else this.val__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addCar(ev){
+    if(ev.target.checked) this.car__ = ev.srcElement.value + ', ';
+    else this.car__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addCha(ev){
+    if(ev.target.checked) this.cha__ = ev.srcElement.value + ', ';
+    else this.cha__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addMot(ev){
+    if(ev.target.checked) this.mot__ = ev.srcElement.value + ', ';
+    else this.mot__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addEng(ev){
+    if(ev.target.checked) this.eng__ = ev.srcElement.value + ', ';
+    else this.eng__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addSop(ev){
+    if(ev.target.checked) this.sop__ = ev.srcElement.value + ', ';
+    else this.sop__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addAce(ev){
+    if(ev.target.checked) this.ace__ = ev.srcElement.value + ', ';
+    else this.ace__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  add140(ev){
+    if(ev.target.checked) this.a140__ = ev.srcElement.value + ', ';
+    else this.a140__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addTra(ev){
+    if(ev.target.checked) this.tra__ = ev.srcElement.value + ', ';
+    else this.tra__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addFil(ev){
+    if(ev.target.checked) this.fil__ = ev.srcElement.value + ', ';
+    else this.fil__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addFila(ev){
+    if(ev.target.checked) this.fila__ = ev.srcElement.value + ', ';
+    else this.fila__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+  addAdi(ev){
+    if(ev.target.checked) this.adi__ = ev.srcElement.value + ', ';
+    else this.adi__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+  }
+
   airbag() {
     this.air = !this.air;
     this.myForm.patchValue({bolsa: this.air});
@@ -490,7 +672,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI1);
           ref.delete();
         }
-        this.filePathI1 = `images_servicar/image_${Date.now()}`;
+        this.filePathI1 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI1);
         this.storage.upload(this.filePathI1, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -507,7 +689,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
             const ref = this.storage.ref(this.filePathI2);
             ref.delete();
           }
-          this.filePathI2 = `images_servicar/image_${Date.now()}`;
+          this.filePathI2 = `images_sanchez/image_${Date.now()}`;
           const fileRef = this.storage.ref(this.filePathI2);
           this.storage.upload(this.filePathI2, this.uploadedImage).snapshotChanges().pipe(
             finalize(() => {
@@ -524,7 +706,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI3);
           ref.delete();
         }
-        this.filePathI3 = `images_servicar/image_${Date.now()}`;
+        this.filePathI3 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI3);
         this.storage.upload(this.filePathI3, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -541,7 +723,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI4);
           ref.delete();
         }
-        this.filePathI4 = `images_servicar/image_${Date.now()}`;
+        this.filePathI4 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI4);
         this.storage.upload(this.filePathI4, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -558,7 +740,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI5);
           ref.delete();
         }
-        this.filePathI5 = `images_servicar/image_${Date.now()}`;
+        this.filePathI5 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI5);
         this.storage.upload(this.filePathI5, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -575,7 +757,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI6);
           ref.delete();
         }
-        this.filePathI6 = `images_servicar/image_${Date.now()}`;
+        this.filePathI6 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI6);
         this.storage.upload(this.filePathI6, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -592,7 +774,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI7);
           ref.delete();
         }
-        this.filePathI7 = `images_servicar/image_${Date.now()}`;
+        this.filePathI7 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI7);
         this.storage.upload(this.filePathI7, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -609,7 +791,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
           const ref = this.storage.ref(this.filePathI8);
           ref.delete();
         }
-        this.filePathI8 = `images_servicar/image_${Date.now()}`;
+        this.filePathI8 = `images_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathI8);
         this.storage.upload(this.filePathI8, this.uploadedImage).snapshotChanges().pipe(
           finalize(() => {
@@ -636,7 +818,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         const ref = this.storage.ref(this.filePathf1);
           ref.delete();
       }
-      this.filePathf1 = `signs_servicar/image_${Date.now()}`;
+      this.filePathf1 = `signs_sanchez/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf1);
       this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -660,7 +842,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         const ref = this.storage.ref(this.filePathf2);
           ref.delete();
       }
-      this.filePathf2 = `signs_servicar/image_${Date.now()}`;
+      this.filePathf2 = `signs_sanchez/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf2);
       this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -684,7 +866,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         const ref = this.storage.ref(this.filePathf3);
           ref.delete();
       }
-      this.filePathf3 = `signs_servicar/image_${Date.now()}`;
+      this.filePathf3 = `signs_sanchez/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf3);
       this.storage.upload(this.filePathf3, blob).snapshotChanges().pipe(
         finalize(() => {
@@ -708,7 +890,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
         const ref = this.storage.ref(this.filePathf4);
           ref.delete();
       }
-      this.filePathf4 = `signs_servicar/image_${Date.now()}`;
+      this.filePathf4 = `signs_sanchez/image_${Date.now()}`;
       const fileRef = this.storage.ref(this.filePathf4);
       this.storage.upload(this.filePathf4, blob).snapshotChanges().pipe(
         finalize(() => {

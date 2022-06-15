@@ -36,59 +36,59 @@ export class ApiService {
   }
 
   GetFormsList() {
-    this.formsList = this.db.list('servicar/client-list', ref => {
+    this.formsList = this.db.list('sanchez/client-list', ref => {
       return ref.orderByChild('nombre')
     });
     return this.formsList;
   }
 
   GetOrdenesList() {
-    this.ordenList = this.db.list('servicar/orden-list');
+    this.ordenList = this.db.list('sanchez/orden-list');
     return this.ordenList;
   }
 
   GetNotasList() {
-    this.notaList = this.db.list('servicar/nota-list');
+    this.notaList = this.db.list('sanchez/nota-list');
     return this.notaList;
   }
 
   GetForm(key: string) {
-    this.formObject = this.db.object('servicar/client-list/' + key);
+    this.formObject = this.db.object('sanchez/client-list/' + key);
     return this.formObject;
   }
 
   GetOrden(key: string) {
-    this.ordenObject = this.db.object('servicar/orden-list/' + key);
+    this.ordenObject = this.db.object('sanchez/orden-list/' + key);
     return this.ordenObject;
   }
 
   GetNota(key: string) {
-    this.notaObject = this.db.object('servicar/nota-list/' + key);
+    this.notaObject = this.db.object('sanchez/nota-list/' + key);
     return this.notaObject;
   }
 
   UpdateForm(form: Form, key: string) {
-    this.db.object('servicar/client-list/' + key)
+    this.db.object('sanchez/client-list/' + key)
     .update(form);
   }
 
   UpdateOrden(orden: Orden, key: string) {
-    this.db.object('servicar/orden-list/' + key)
+    this.db.object('sanchez/orden-list/' + key)
     .update(orden);
   }
 
   UpdateNota(nota: Nota, key: string) {
-    this.db.object('servicar/nota-list/' + key)
+    this.db.object('sanchez/nota-list/' + key)
     .update(nota);
   }
 
   DeleteForm(key: string) {
-    this.formObject = this.db.object('servicar/client-list/' + key);
+    this.formObject = this.db.object('sanchez/client-list/' + key);
     this.formObject.remove();
   }
 
   async DeleteOrden(key: string) {
-    this.ordenObject = this.db.object('servicar/orden-list/' + key);
+    this.ordenObject = this.db.object('sanchez/orden-list/' + key);
       await this.ordenObject.valueChanges().subscribe(data => {
         if (data){
           if (data.firma1n !== '') { const ref = this.storage.ref(data.firma1n); ref.delete(); }
@@ -109,7 +109,7 @@ export class ApiService {
   }
 
   async DeleteNota(key: string) {
-    this.notaObject = this.db.object('servicar/nota-list/' + key);
+    this.notaObject = this.db.object('sanchez/nota-list/' + key);
     await this.notaObject.valueChanges().subscribe(data => {
       if (data){
         if (data.firma1n !== '') { const ref = this.storage.ref(data.firma1n); ref.delete(); }
@@ -119,12 +119,12 @@ export class ApiService {
   }
 
   getLastOrden(){
-    this.lastOrdenRef = this.db.list('servicar/orden-list/', ref => ref.limitToLast(1)).valueChanges();
+    this.lastOrdenRef = this.db.list('sanchez/orden-list/', ref => ref.limitToLast(1)).valueChanges();
     return this.lastOrdenRef;
   }
 
   getLastNota(){
-    this.lastNotaRef = this.db.list('servicar/nota-list/', ref => ref.limitToLast(1)).valueChanges();
+    this.lastNotaRef = this.db.list('sanchez/nota-list/', ref => ref.limitToLast(1)).valueChanges();
     return this.lastNotaRef;
   }
 }

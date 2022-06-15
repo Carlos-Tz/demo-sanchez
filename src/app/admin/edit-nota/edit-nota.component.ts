@@ -325,7 +325,7 @@ export class EditNotaComponent implements OnInit {
           const ref = this.storage.ref(this.filePathf1);
             ref.delete();
         }
-        this.filePathf1 = `signs_servicar/image_${Date.now()}`;
+        this.filePathf1 = `signs_sanchez/image_${Date.now()}`;
         const fileRef = this.storage.ref(this.filePathf1);
         this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
           finalize(() => {
