@@ -104,6 +104,32 @@ export class EditOrdenComponent implements OnInit, AfterViewInit {
     tcar: 'sedan',
     gas: 50
   };
+  bal__ = '';
+  afi__ = '';
+  dis__ = '';
+  tam__ = '';
+  fre__ = '';
+  ali__ = '';
+  bala__ = '';
+  mon__ = '';
+  rot__ = '';
+  onz__ = '';
+  val__ = '';
+  car__ = '';
+  cha__ = '';
+  mot__ = '';
+  eng__ = '';
+  sop__ = '';
+  ace__ = '';
+  a140__ = '';
+  tra__ = '';
+  fil__ = '';
+  fila__ = '';
+  adi__ = '';
+  trabajos = '';
+  s1 = '';
+  s2 = '';
+  s3 = '';
 
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
     // console.log('Processing beforeunload...');
@@ -310,6 +336,184 @@ export class EditOrdenComponent implements OnInit, AfterViewInit {
       }
       /* this.myForm.patchValue(data); */
     });
+  }
+
+  addTrabajo(ev){
+    console.log(ev.target.checked);
+    console.log(ev.srcElement.value);
+  }
+
+  ser(){
+    if(this.bal__ || this.afi__ || this.dis__ || this.tam__ || this.fre__){
+      this.s1 = 'SERVICIO MECÁNICO: ';
+    }else {
+      this.s1 = '';
+    }
+    if(this.ali__ || this.bala__ || this.mon__ || this.rot__ || this.onz__ || this.val__){
+      this.s2 = 'SERVICIO DE ALINEACIÓN Y BALANCEO: ';
+    }else {
+      this.s2 = '';
+    }
+    if(this.car__ || this.mot__ || this.eng__ || this.sop__ || this.ace__ || this.a140__ || this.tra__ || this.fil__ || this.fila__ || this.adi__){
+      this.s3 = 'SERVICIO DE LAVADO Y ENGRASADO: ';
+    }else {
+      this.s3 = '';
+    }
+  }
+
+  addBal(ev){
+    if(ev.target.checked) this.bal__ = ev.srcElement.value + ', ';
+    else this.bal__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addAfi(ev){
+    if(ev.target.checked) this.afi__ = ev.srcElement.value + ', ';
+    else this.afi__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addDis(ev){
+    if(ev.target.checked) this.dis__ = ev.srcElement.value + ', ';
+    else this.dis__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addTam(ev){
+    if(ev.target.checked) this.tam__ = ev.srcElement.value + ', ';
+    else this.tam__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addFre(ev){
+    if(ev.target.checked) this.fre__ = ev.srcElement.value + ', ';
+    else this.fre__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addAli(ev){
+    if(ev.target.checked) this.ali__ = ev.srcElement.value + ', ';
+    else this.ali__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addBala(ev){
+    if(ev.target.checked) this.bala__ = ev.srcElement.value + ', ';
+    else this.bala__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addMon(ev){
+    if(ev.target.checked) this.mon__ = ev.srcElement.value + ', ';
+    else this.mon__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addRot(ev){
+    if(ev.target.checked) this.rot__ = ev.srcElement.value + ', ';
+    else this.rot__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addOnz(ev){
+    if(ev.target.checked) this.onz__ = ev.srcElement.value + ', ';
+    else this.onz__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addVal(ev){
+    if(ev.target.checked) this.val__ = ev.srcElement.value + ', ';
+    else this.val__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addCar(ev){
+    if(ev.target.checked) this.car__ = ev.srcElement.value + ', ';
+    else this.car__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addCha(ev){
+    if(ev.target.checked) this.cha__ = ev.srcElement.value + ', ';
+    else this.cha__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addMot(ev){
+    if(ev.target.checked) this.mot__ = ev.srcElement.value + ', ';
+    else this.mot__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addEng(ev){
+    if(ev.target.checked) this.eng__ = ev.srcElement.value + ', ';
+    else this.eng__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addSop(ev){
+    if(ev.target.checked) this.sop__ = ev.srcElement.value + ', ';
+    else this.sop__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addAce(ev){
+    if(ev.target.checked) this.ace__ = ev.srcElement.value + ', ';
+    else this.ace__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  add140(ev){
+    if(ev.target.checked) this.a140__ = ev.srcElement.value + ', ';
+    else this.a140__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addTra(ev){
+    if(ev.target.checked) this.tra__ = ev.srcElement.value + ', ';
+    else this.tra__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addFil(ev){
+    if(ev.target.checked) this.fil__ = ev.srcElement.value + ', ';
+    else this.fil__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addFila(ev){
+    if(ev.target.checked) this.fila__ = ev.srcElement.value + ', ';
+    else this.fila__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
+  }
+  addAdi(ev){
+    if(ev.target.checked) this.adi__ = ev.srcElement.value + ', ';
+    else this.adi__ = '';
+    this.ser();
+    this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
 
   airbag() {

@@ -62,10 +62,12 @@ function btn_clear() {
 span.onclick = function () {
     modal.style.display = "none";
     document.getElementById('imgSign').src = signaturePad.toDataURL();
+    document.getElementById('imgSign3').src = signaturePad.toDataURL();
 }
 span2.onclick = function () {
     modal2.style.display = "none";
     document.getElementById('imgSign2').src = signaturePad2.toDataURL();
+    document.getElementById('imgSign4').src = signaturePad2.toDataURL();
 }
 span3.onclick = function () {
     modal3.style.display = "none";
@@ -173,4 +175,11 @@ document.addEventListener('keypress', function(evt) {
   function s_trabajo(){
     var trab = document.getElementById('trabajo_');
     trab.style.display = "block";
+  }
+  function s_trabajo1(){
+    var con = confirm('La descripción de trabajo actual se reemplazará por la nueva selección!');
+    if(con){
+        var trab = document.getElementById('trabajo_');
+        trab.style.display = "block";
+    }
   }

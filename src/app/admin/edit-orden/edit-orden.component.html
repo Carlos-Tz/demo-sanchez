@@ -186,13 +186,65 @@
           </div>
 
           <div class="row" style="margin: .25rem .75rem 0 .75rem;">          
+            <div class="row" style="position: absolute; z-index: 1; background-color: gray; width: 97%; display: none;" id="trabajo_">
+              <div class="row">
+                <div class="col s12">
+                  <span class="secondary-content" onclick="trabajo()" style="cursor: pointer;"><i class="material-icons" style="font-weight: 700; color: white; padding-top: 0.5rem; font-size: 2rem;">check</i></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s4">
+                  <ul class="collection with-header" >
+                    <li class="collection-header"><span style="font-size: 1.1rem;">SERVICIO MECÁNICO</span></li>
+                    <li class="collection-item"><div>CAMBIO DE BALATAS <input type="checkbox" (change)="addBal($event)" value="Cambio de balatas" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>AFINACIÓN <input type="checkbox" (change)="addAfi($event)" value="Afinación" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>RECTIFICAR DISCOS <input type="checkbox" (change)="addDis($event)" value="Rectificar discos" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>RECTIFICAR TAMBORES <input type="checkbox" (change)="addTam($event)" value="Rectificar tambores" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>AJUSTAR FRENOS <input type="checkbox" (change)="addFre($event)" value="Ajustar frenos" class="secondary-content"></div></li>
+                  </ul>
+                </div>
+                <div class="col s4">
+                  <ul class="collection with-header">
+                    <li class="collection-header"><span style="font-size: 1.1rem;">ALINEACIÓN Y BALANCEO</span></li>
+                    <li class="collection-item"><div>ALINEACIÓN<input type="checkbox" (change)="addAli($event)" value="Alineación" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>BALANCEO<input type="checkbox" (change)="addBala($event)" value="Balanceo" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>MONTAJE<input type="checkbox" (change)="addMon($event)" value="Montaje" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ROTACIÓN<input type="checkbox" (change)="addRot($event)" value="Rotación" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ONZAS PLOMO<input type="checkbox" (change)="addOnz($event)" value="Onzas plomo" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>VÁLVULAS<input type="checkbox" (change)="addVal($event)" value="Válvulas" class="secondary-content"></div></li>
+                  </ul>
+                </div>
+                <div class="col s4">
+                  <ul class="collection with-header">
+                    <li class="collection-header"><span style="font-size: 1.1rem;">LAVADO Y ENGRASADO</span></li>
+                    <li class="collection-item"><div>CARROCERÍA<input type="checkbox" (change)="addCar($event)" value="Carrocería" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>CHASIS<input type="checkbox" (change)="addCha($event)" value="Chasis" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>MOTOR<input type="checkbox" (change)="addMot($event)" value="Motor" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ENGRASADO GENERAL<input type="checkbox" (change)="addEng($event)" value="Engrasado general" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>SOPLETEADO CHASIS<input type="checkbox" (change)="addSop($event)" value="Sopleteado chasis" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ACEITE PARA MOTOR<input type="checkbox" (change)="addAce($event)" value="Aceite para motor" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ACEITE No. 140<input type="checkbox" (change)="add140($event)" value="Aceite No. 140" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>TRANSMISIÓN HIDRÁULICA<input type="checkbox" (change)="addTra($event)" value="Transmisión hidráulica" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>FILTRO DE ACEITE<input type="checkbox" (change)="addFil($event)" value="Filtro de aceite" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>FILTRO DE AIRE<input type="checkbox" (change)="addFila($event)" value="Filtro de aire" class="secondary-content"></div></li>
+                    <li class="collection-item"><div>ADITIVO<input type="checkbox" (change)="addAdi($event)" value="Aditivo" class="secondary-content"></div></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col s1 center-align grey" style="padding: .3em 0; font-weight: 700; color: #9e9e9e;">
+              _
+            </div> -->
             <div class="col s12 center-align grey" style="padding: .3em 0; font-weight: 700; color: white;">
               TRABAJO A REALIZAR              
+              <i class="material-icons secondary-content no-print" onclick="s_trabajo1()" style="font-weight: 700; color: white; cursor: pointer;">keyboard_arrow_down</i>
             </div>
+            <!-- <div class="col s1 center-align grey" style="font-weight: 700; color: white;">
+            </div> -->
           </div>
           <div class="row">
             <div class="col s12">
-                <textarea name="" rows="2" tabindex="12" class="focusNext form-control txa" formControlName="trabajo"></textarea>
+                <textarea name="" rows="4" tabindex="12" class="focusNext form-control txa" style="font-size: 0.75rem !important;" formControlName="trabajo"></textarea>
             </div>
           </div>
           <div class="row" style="margin: .75rem .75rem 0 .75rem;">          
@@ -585,10 +637,12 @@
                     mencionada por la empresa, en caso de <b>NO CUMPLIR</b> se cobrará $100.00 (cien pesos 00/100 M.N.) por cada día de retraso por concepto de pensión<br><br>
                     En <b>Servicios de Restauración</b> el cliente deberá de cumplir con los requerimientos especificados por la
                     empresa para poder completar los trabajos a realizar, en caso de que se termine una etapa y el cliente no
-                    cumpla con la fecha establecida de entrega de dinero o piezas se cobrará $100.00 (cien pesos 00/100 M.N.) por cada día de retraso por concepto de pensión <br><br><br>
+                    cumpla con la fecha establecida de entrega de dinero o piezas se cobrará $100.00 (cien pesos 00/100 M.N.) por cada día de retraso por concepto de pensión <br><br>
           
                     Acepto los términos establecidos en este documento. En Servicios Generales el cliente deberá de recoger su auto
-                    dos días máximos a la fecha de entrega mencionada por la empresa, en caso de <b>NO CUMPLIR</b> se cobrará $100.00 (cien pesos 00/100 M.N.) por cada día de retraso por concepto de pensión <br>
+                    dos días máximos a la fecha de entrega mencionada por la empresa, en caso de <b>NO CUMPLIR</b> se cobrará $100.00 (cien pesos 00/100 M.N.) por cada día de retraso por concepto de pensión <br><br>
+
+                    La empresa no se hace responsable por fallas eléctricas o mecánicas durante el lavado del motor o de objetos extraviados no entregados en la administración.
                     </p>
             </div>
           </div>
@@ -599,7 +653,7 @@
                   <div class="signature">
                     <div id="contSign3" onclick="btn_click3()">
                       <!-- <img src="" id="imgSign3" (load)="imgChanged3($event)"> -->
-                    <img src="{{myForm.value.firma3}}" id="imgSign3" (load)="imgChanged3($event)">
+                    <img src="{{myForm.value.firma1}}" id="imgSign3">
                       <!-- <img src="" id="imgSign3"> -->
                     </div>
                     <hr>
@@ -610,7 +664,7 @@
                   <div class="signature">
                     <div id="contSign4" onclick="btn_click4()">
                       <!-- <img src="" id="imgSign4" (load)="imgChanged4($event)"> -->
-                    <img src="{{myForm.value.firma4}}" id="imgSign4" (load)="imgChanged4($event)">
+                    <img src="{{myForm.value.firma2}}" id="imgSign4">
                       <!-- <img src="" id="imgSign4"> -->
                     </div>
                     <hr>

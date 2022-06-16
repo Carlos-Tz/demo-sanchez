@@ -173,42 +173,7 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     $("#contSign2").each(function (){ this.style.pointerEvents = 'none'; });
     $("#contSign3").each(function (){ this.style.pointerEvents = 'none'; });
     $("#contSign4").each(function (){ this.style.pointerEvents = 'none'; });
-    /*$('.select2').select2();
-    $('#nnombre').on('select2:select', function (e) {
-      var data = e.params.data; 
-      //console.log(data);
-      //console.log(data.element.__ngContext__);
-      //console.log(data.element.__ngContext__[22]);
-      //this.myForm.patchValue({correo: this.save});    
-      $('#id').val(data.id).trigger('change');
-      $('#nombre').val(data.element.__ngContext__[22].nombre).trigger('change');
-      $('#tel').val(data.element.__ngContext__[22].tel).trigger('change');
-      $('#correo').val(data.element.__ngContext__[22].email).trigger('change');
-      //return data.element.__ngContext__[22];
-    });
-    this.datos_n = $('#nombre').change(function() {
-      //console.log(this.value);
-      return this.value;
-      //this.nameS(this.value);
-    });
-    this.datos_t = $('#tel').change(function() {
-      //console.log(this.value);
-      return this.value;
-      //this.nameS(this.value);
-    });
-    this.datos_c = $('#correo').change(function() {
-      //console.log(this.value);
-      return this.value;
-      //this.nameS(this.value);
-    });
-
-    this.myForm.get('nombre').valueChanges.subscribe(selectedValue => {
-      console.log(selectedValue);
-    }) */
-    /* this.formApi.GetOrdenesList().snapshotChanges().subscribe(data => {
-      this.ord = data.length + 1;
-      this.myForm.patchValue({orden: String(this.ord).padStart(6, '0')});
-    }); */
+    
     this.fecha = fechaObj.format(new Date(), 'D [/] MM [/] YYYY');
     this.myForm.patchValue({ fecha: this.fecha });
     this.ingresoC = this.ff.getFullYear() + '-' + ('0' + (this.ff.getMonth() + 1)).slice(-2) + '-' + ('0' + this.ff.getDate()).slice(-2);
@@ -356,20 +321,6 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
   }
 
   nameS(ev) {
-    /* console.log(this.datos_n[0].value);
-    console.log(this.datos_t[0].value);
-    console.log(this.datos_c[0].value); */
-    /* this.myForm.patchValue({correo: this.datos_c[0].value});
-    this.myForm.patchValue({tel: this.datos_t[0].value});
-    this.myForm.patchValue({nombre: this.datos_n[0].value});
-    this.nameC = this.datos_n[0].value; */
-    //console.log(ev);
-    //alert(this.myForm.get('correo').value);
-    /* console.log($('#nombre'))
-    console.log(this.myForm.get('correo').value);
-    console.log(this.myForm.get('nombre').value);
-    console.log(this.myForm.get('tel').value); */
-    /* this.needleValue = ev.srcElement.value; */
     this.formApi.GetForm(ev.srcElement.value).valueChanges().subscribe(data => {
       if (data.nombre && data.tel && data.email){
         this.myForm.patchValue({correo: data.email});
@@ -408,132 +359,154 @@ export class NewOrdenComponent implements OnInit, AfterViewInit {
     else this.bal__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addAfi(ev){
     if(ev.target.checked) this.afi__ = ev.srcElement.value + ', ';
     else this.afi__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addDis(ev){
     if(ev.target.checked) this.dis__ = ev.srcElement.value + ', ';
     else this.dis__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addTam(ev){
     if(ev.target.checked) this.tam__ = ev.srcElement.value + ', ';
     else this.tam__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addFre(ev){
     if(ev.target.checked) this.fre__ = ev.srcElement.value + ', ';
     else this.fre__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addAli(ev){
     if(ev.target.checked) this.ali__ = ev.srcElement.value + ', ';
     else this.ali__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addBala(ev){
     if(ev.target.checked) this.bala__ = ev.srcElement.value + ', ';
     else this.bala__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addMon(ev){
     if(ev.target.checked) this.mon__ = ev.srcElement.value + ', ';
     else this.mon__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addRot(ev){
     if(ev.target.checked) this.rot__ = ev.srcElement.value + ', ';
     else this.rot__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addOnz(ev){
     if(ev.target.checked) this.onz__ = ev.srcElement.value + ', ';
     else this.onz__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addVal(ev){
     if(ev.target.checked) this.val__ = ev.srcElement.value + ', ';
     else this.val__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addCar(ev){
     if(ev.target.checked) this.car__ = ev.srcElement.value + ', ';
     else this.car__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addCha(ev){
     if(ev.target.checked) this.cha__ = ev.srcElement.value + ', ';
     else this.cha__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addMot(ev){
     if(ev.target.checked) this.mot__ = ev.srcElement.value + ', ';
     else this.mot__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addEng(ev){
     if(ev.target.checked) this.eng__ = ev.srcElement.value + ', ';
     else this.eng__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addSop(ev){
     if(ev.target.checked) this.sop__ = ev.srcElement.value + ', ';
     else this.sop__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addAce(ev){
     if(ev.target.checked) this.ace__ = ev.srcElement.value + ', ';
     else this.ace__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   add140(ev){
     if(ev.target.checked) this.a140__ = ev.srcElement.value + ', ';
     else this.a140__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addTra(ev){
     if(ev.target.checked) this.tra__ = ev.srcElement.value + ', ';
     else this.tra__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addFil(ev){
     if(ev.target.checked) this.fil__ = ev.srcElement.value + ', ';
     else this.fil__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addFila(ev){
     if(ev.target.checked) this.fila__ = ev.srcElement.value + ', ';
     else this.fila__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
   addAdi(ev){
     if(ev.target.checked) this.adi__ = ev.srcElement.value + ', ';
     else this.adi__ = '';
     this.ser();
     this.trabajos = this.s1 + this.bal__ + this.afi__ + this.dis__ + this.tam__ + this.fre__ + this.s2 + this.ali__ + this.bala__ + this.mon__ + this.rot__ + this.onz__ + this.val__ + this.s3 + this.car__ + this.cha__ + this.mot__ + this.eng__ + this.sop__ + this.ace__ + this.a140__ + this.tra__ + this.fil__ + this.fila__ + this.adi__;
+    this.myForm.patchValue({trabajo: this.trabajos});
   }
 
   airbag() {
