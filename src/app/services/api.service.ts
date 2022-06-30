@@ -5,6 +5,7 @@ import { Orden } from '../models/orden';
 import { Nota } from '../models/nota';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Inspeccion } from '../models/inspeccion';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,14 @@ export class ApiService {
   formObject: AngularFireObject<any>;
   lastOrdenRef: Observable<any[]>;
   lastNotaRef: Observable<any[]>;
+  lastInspeccionRef: Observable<any[]>;
   /* public callList: AngularFireList<any>; */
   public ordenList: AngularFireList<any>;
   public notaList: AngularFireList<any>;
+  public inspeccionList: AngularFireList<any>;
   public ordenObject: AngularFireObject<any>;
   public notaObject: AngularFireObject<any>;
+  public inspeccionObject: AngularFireObject<any>;
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   AddForm(form: object) {
@@ -33,6 +37,10 @@ export class ApiService {
 
   AddNota(nota: object) {
     this.notaList.push(nota as Nota);
+  }
+
+  AddInspeccion(inspeccion: object) {
+    this.inspeccionList.push(inspeccion as Inspeccion);
   }
 
   GetFormsList() {
@@ -52,6 +60,11 @@ export class ApiService {
     return this.notaList;
   }
 
+  GetInspeccionesList() {
+    this.inspeccionList = this.db.list('sanchez/inspeccion-list');
+    return this.inspeccionList;
+  }
+
   GetForm(key: string) {
     this.formObject = this.db.object('sanchez/client-list/' + key);
     return this.formObject;
@@ -65,6 +78,11 @@ export class ApiService {
   GetNota(key: string) {
     this.notaObject = this.db.object('sanchez/nota-list/' + key);
     return this.notaObject;
+  }
+
+  GetInspeccion(key: string) {
+    this.inspeccionObject = this.db.object('sanchez/inspeccion-list/' + key);
+    return this.inspeccionObject;
   }
 
   UpdateForm(form: Form, key: string) {
@@ -82,9 +100,19 @@ export class ApiService {
     .update(nota);
   }
 
+  UpdateInspeccion(inspeccion: Inspeccion, key: string) {
+    this.db.object('sanchez/inspeccion-list/' + key)
+    .update(inspeccion);
+  }
+
   DeleteForm(key: string) {
     this.formObject = this.db.object('sanchez/client-list/' + key);
     this.formObject.remove();
+  }
+
+  DeleteInspeccion(key: string) {
+    this.inspeccionObject = this.db.object('sanchez/inspeccion-list/' + key);
+    this.inspeccionObject.remove();
   }
 
   async DeleteOrden(key: string) {
@@ -126,5 +154,10 @@ export class ApiService {
   getLastNota(){
     this.lastNotaRef = this.db.list('sanchez/nota-list/', ref => ref.limitToLast(1)).valueChanges();
     return this.lastNotaRef;
+  }
+
+  getLastInspeccion(){
+    this.lastInspeccionRef = this.db.list('sanchez/inspeccion-list/', ref => ref.limitToLast(1)).valueChanges();
+    return this.lastInspeccionRef;
   }
 }

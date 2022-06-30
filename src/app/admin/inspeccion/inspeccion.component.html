@@ -5,14 +5,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row" style="margin: 1rem;">
-                        <div class="col s12 l2"></div>
+                        <div class="col s12 l3"></div>
                         <div class="col s12 l6" style="padding: 1rem;">
                             <p class="card-title h5" style="text-align: center;">
-                                Presupuestos / Notas de venta
+                                Inspecciones de Auto
                             </p>
                         </div>
-                        <div class="col s12 l4" style="padding: 1rem;">
-                            <button mat-button class="btn" [routerLink]="['/nueva-nota']"><span class="material-icons" style="vertical-align: middle;">add</span> Nuevo presupuesto</button>
+                        <div class="col s12 l3" style="padding: 1rem;">
+                            <button mat-button class="btn" [routerLink]="['/nueva-inspeccion']"><span class="material-icons" style="vertical-align: middle;">add</span> Nueva inspección</button>
                         </div>
                     </div>
                     <div *ngIf="data" style="margin:1rem;">
@@ -22,7 +22,7 @@
                                   <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Buscar">
                                 </mat-form-field>
                             </div>
-                            <!-- <div class="col s4"></div> -->
+                            <!-- <div class="col-md-4"></div> -->
                         </div>
                         <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
                         <!-- <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="fecha" matSortDirection="desc" matSortDisableClear> -->
@@ -33,13 +33,8 @@
                                 <mat-cell *matCellDef="let element" [ngClass]="{'com':element.estado}">{{element.orden}}
                                 </mat-cell>
                             </ng-container>
-                            <ng-container matColumnDef="presupuesto">
-                                <mat-header-cell *matHeaderCellDef class="pad-l show-hh">Tipo</mat-header-cell>
-                                <mat-cell *matCellDef="let element" class="pad-l show-hh" [ngClass]="{'com':element.estado}"><span *ngIf="element.presupuesto">PRESUPUESTO</span><span *ngIf="!element.presupuesto">NOTA DE VENTA</span></mat-cell>
-                                <!-- <mat-cell *matCellDef="let element" [ngClass]="{'com':element.estado}"><span *ngIf="!element.presupuesto">NOTA DE VENTA</span></mat-cell> -->
-                            </ng-container>
                             <ng-container matColumnDef="nombre">
-                                <mat-header-cell *matHeaderCellDef class="pad-l">Nombre</mat-header-cell>
+                                <mat-header-cell *matHeaderCellDef mat-sort-header class="pad-l">Nombre</mat-header-cell>
                                 <mat-cell *matCellDef="let element" class="pad-l" [ngClass]="{'com':element.estado}">{{element.nombre}}
                                 </mat-cell>
                             </ng-container>
@@ -58,12 +53,12 @@
                             </ng-container>
 
                             <ng-container matColumnDef="action">
-                                <mat-header-cell *matHeaderCellDef class="pad-l"> Acción </mat-header-cell>
-                                <mat-cell *matCellDef="let element; let i = index;" class="pad-l" [ngClass]="{'com':element.estado}">
+                                <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+                                <mat-cell *matCellDef="let element; let i = index;" [ngClass]="{'com':element.estado}">
                                     <!-- <button class="btn btn-outline-success btn-sm" (click)="editCliente(element.$key)"><span class="material-icons">edit</span></button> -->
 
-                                    <button class="btn  btn-small" [routerLink]="['/editar-nota/', element.$key]"><span class="material-icons">edit</span></button>
-                                    <button class="btn red darken-1 btn-small" (click)="deleteNota(element.$key)"><span class="material-icons">delete</span></button>
+                                    <button class="btn  btn-small" [routerLink]="['/editar-inspeccion/', element.$key]"><span class="material-icons">edit</span></button>
+                                    <button class="btn red darken-1 btn-small" (click)="deleteInspeccion(element.$key)"><span class="material-icons">delete</span></button>
                                     <!-- <button mat-raised-button color="accent">Ver</button> -->
                                     <!-- <button mat-raised-button color="accent" (click)="deleteBook(i, element)">Delete</button> -->
                                 </mat-cell>
@@ -81,4 +76,3 @@
         </div>
     </div>
 </div>
-

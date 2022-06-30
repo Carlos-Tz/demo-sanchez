@@ -1,0 +1,535 @@
+<div class="app">
+    <form [formGroup]="myForm" novalidate autocomplete="off">
+    <section>
+        <div class="page">
+          <div class="inner">
+            <div class="row">
+              <div class="col s4">
+                <img src="assets/logo.png" alt="" style="width: 60%;">
+              </div>
+              <div class="col s4">
+                <div class="datos">
+                  <!-- <h6 *ngIf="!myForm.value.presupuesto" style="font-weight: 600; margin: 0;">NOTA DE VENTA</h6>-->
+                  <h6 style="font-weight: 600; margin: 0;">INSPECCIÓN DE AUTO</h6>
+                  <h6 style="font-weight: 600; margin-top: 0 !important; margin-bottom: 0 !important;">MULTISERVICIO SANCHEZ</h6>
+                  <p>Manantiales de Morelia No. 58-A <span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;">location_on</span></p>
+                  <p>Col. Campestre Los Manantiales</p>
+                  <p>Esq. Libramiento Sur CP. 58186 Morelia Mich.</p>
+                  <div style="display:inline-flex;">
+                    <div>
+                      <p>Tel. 01 (443) 316-13-17 <span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;">phone</span></p></div>
+                    <!-- <div>
+                      <img style="height: 1.3rem; padding-left: 0.1rem;" src="https://img.icons8.com/color/48/undefined/whatsapp--v1.png"/>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col s4" style="font-size: 0.7rem; font-weight: 600;">
+                <div class="row">
+                  <div class="col s8 right-align" style=" padding-right: 0;">
+                    FOLIO:
+                  </div>
+                  <div class="col s4">
+                    <input type="text" id="orden" formControlName="orden" class="right-align" style="height: 1rem; color: red; font-size: .8rem; font-weight: 700; border-bottom: 0;" readonly>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col s3"></div>
+                  <div class="col s2 g">
+                    <input type="checkbox" name="" id="" checked disabled>
+                  </div>
+                  <div class="col s7">
+                    BUEN ESTADO
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col s3"></div>
+                  <div class="col s2 y">
+                    <input type="checkbox" name="" id="" checked disabled>
+                  </div>
+                  <div class="col s7">
+                    REQUIERE ATENCIÓN
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col s3"></div>
+                  <div class="col s2 r">
+                    <input type="checkbox" name="" id="" checked disabled>
+                  </div>
+                  <div class="col s7">
+                    MAL ESTADO
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin-top: .5rem !important;">
+                <div class="row ml0 mr0" style="margin-top: .15rem !important;">
+                    <div class="col s6 pl0 pr0">
+                      <div class="row ml0 mr0">
+                        <div class="col s2 pl0 pr0">
+                          
+                        </div>
+                        <div class="col s10">
+                          <input type="text" class="focusNext" readonly style="border: none !important;">
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">                
+                        <div class="col s2">
+                          Marca:
+                        </div>
+                        <div class="col s4">
+                          <input type="text" autofocus tabindex="1" class="focusNext form-control-plaintext" formControlName="marca">
+                        </div>
+                        <div class="col s2">
+                          Año:
+                        </div>
+                        <div class="col s4">
+                          <input type="text" class="focusNext" formControlName="anio">              
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s2">
+                          Modelo:
+                        </div>
+                        <div class="col s4">
+                          <input type="text" tabindex="2" class="focusNext" formControlName="modelo">                  
+                        </div>
+                        <div class="col s2">
+                          Color:
+                        </div>
+                        <div class="col s4">
+                          <input type="text" tabindex="3" class="focusNext" formControlName="color">              
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s3">
+                          Kilometraje:
+                        </div>
+                        <div class="col s3">
+                          <input type="text" tabindex="4" class="focusNext" formControlName="km">
+                        </div>
+                        <div class="col s2">
+                          Placas:
+                        </div>
+                        <div class="col s4">
+                          <input type="text" tabindex="5" class="focusNext" formControlName="placas">
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s3">
+                          No. de Serie:
+                        </div>
+                        <div class="col s9">
+                          <input type="text" tabindex="6" class="focusNext" formControlName="serie">
+                        </div>
+                      </div>
+                      <!-- <div class="row ml0 mr0">
+                        <div class="col s4">
+                          Ingreso en grúa:
+                        </div>
+                        <div class="col s8">
+                          <div>                  
+                            Si
+                            <input name="grua" type="radio" value="si" formControlName="grua" style="margin-right: 2rem;">
+                            No
+                            <input name="grua" type="radio" value="no" formControlName="grua">                  
+                          </div>
+                        </div>
+                      </div>  -->             
+                    </div>
+                    <div class="col s6">
+                      <div class="row ml0 mr0 center-align">
+                        DATOS DEL CLIENTE
+                      </div>
+                      <div class="row ml0 mr0" style="margin-top: .8em;">
+                        <div class="col s2">
+                          Fecha:
+                        </div>
+                        <div class="col s10 pr0" style="display: none;" id="nameC">
+                          <input type="text" value="{{ingresoC}}">
+                        </div>
+                        <div class="col s10 pr0 no-print">
+                          <input id="fing" type="date" tabindex="7" class="focusNext" formControlName="fecha" [(ngModel)]="ingresoC">
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s2">
+                          Nombre:
+                        </div>
+                        <div class="col s10 pr0" style="display: none;" id="nameC">
+                          <input type="text" value="{{nameC}}">
+                        </div>
+                        <div class="col s8 pr0 no-print">
+                          <input formControlName="nombre" type="text" readonly>
+                        </div>
+                        <div class="col s2 pr0 pl0 no-print box">
+                          <select name="nombre" id="nombre" style="height: 1rem !important; margin: 0 0 8px 0; border: none !important; background-color: #e4e6e5;" (change)="nameS($event)">
+                            <option value=""></option>
+                            <option *ngFor="let form of forms" value="{{form.$key}}">{{form.nombre}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s2">
+                          Teléfono:
+                        </div>
+                        <div class="col s10 pr0">
+                          <input id="tel" type="text" tabindex="10" class="focusNext" formControlName="tel" readonly>
+                        </div>
+                      </div>
+                      <div class="row ml0 mr0">
+                        <div class="col s2">
+                          Correo:
+                        </div>
+                        <div class="col s10 pr0">
+                          <input id="correo" type="text" tabindex="11" class="focusNext" formControlName="correo" readonly>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="row" style="margin-top: 1rem !important;">
+              <div class="col s12">
+                <table class="tt1">
+                  <tr>
+                    <th style="width: 4cm;">FRENOS</th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th>OBSERVACIONES</th>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Balatas Delanteras</td>
+                    <td class="br-1 g"><input type="radio" formControlName="balatas_d" name="balatas_d" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="balatas_d" name="balatas_d" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="balatas_d" name="balatas_d" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_balatas_d"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Balatas Traseras</td>
+                    <td class="br-1 g"><input type="radio" formControlName="balatas_t" name="balatas_t" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="balatas_t" name="balatas_t" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="balatas_t" name="balatas_t" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_balatas_t"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Discos Delanteros</td>
+                    <td class="br-1 g"><input type="radio" formControlName="discos_d"name="discos_d" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="discos_d"name="discos_d" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="discos_d"name="discos_d" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_discos_d"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Discos Traseros</td>
+                    <td class="br-1 g"><input type="radio" formControlName="discos_t" name="discos_t" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="discos_t" name="discos_t" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="discos_t" name="discos_t" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_discos_t"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Cilindros de Frenos</td>
+                    <td class="br-1 g"><input type="radio" formControlName="cilindros" name="cilindros" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="cilindros" name="cilindros" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="cilindros" name="cilindros" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_cilindros"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Líquido de Frenos</td>
+                    <td class="br-1 g"><input type="radio" formControlName="liquido_f" name="liquido_f" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="liquido_f" name="liquido_f" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="liquido_f" name="liquido_f" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_liquido_f"></td>
+                  </tr>
+                  <tr>
+                    <th style="width: 4cm;">SUSPENSIÓN</th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th>OBSERVACIONES</th>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Rótulas</td>
+                    <td class="br-1 g"><input type="radio" formControlName="rotulas" name="rotulas" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="rotulas" name="rotulas" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="rotulas" name="rotulas" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_rotulas"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Bujes</td>
+                    <td class="br-1 g"><input type="radio" formControlName="bujes" name="bujes" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="bujes" name="bujes" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="bujes" name="bujes" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_bujes"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Terminales</td>
+                    <td class="br-1 g"><input type="radio" formControlName="terminales" name="terminales" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="terminales" name="terminales" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="terminales" name="terminales" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_terminales"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Brazos</td>
+                    <td class="br-1 g"><input type="radio" formControlName="brazos" name="brazos" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="brazos" name="brazos" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="brazos" name="brazos" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_brazos"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Dirección</td>
+                    <td class="br-1 g"><input type="radio" formControlName="direccion" name="direccion" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="direccion" name="direccion" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="direccion" name="direccion" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_direccion"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Horquillas</td>
+                    <td class="br-1 g"><input type="radio" formControlName="horquillas" name="horquillas" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="horquillas" name="horquillas" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="horquillas" name="horquillas" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_horquillas"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Vieletas</td>
+                    <td class="br-1 g"><input type="radio" formControlName="vieletas" name="vieletas" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="vieletas" name="vieletas" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="vieletas" name="vieletas" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_vieletas"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Resortes</td>
+                    <td class="br-1 g"><input type="radio" formControlName="resortes" name="resortes" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="resortes" name="resortes" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="resortes" name="resortes" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_resortes"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Tornillos Estabilizadores</td>
+                    <td class="br-1 g"><input type="radio" formControlName="tornillos" name="tornillos" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="tornillos" name="tornillos" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="tornillos" name="tornillos" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_tornillos"></td>
+                  </tr>
+                  <tr>
+                    <th style="width: 4cm;">AMORTIGUADORES</th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th style="width: 1cm;"></th>
+                    <th>OBSERVACIONES</th>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Delanteros</td>
+                    <td class="br-1 g"><input type="radio" formControlName="amortiguadores_d" name="amortiguadores_d" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="amortiguadores_d" name="amortiguadores_d" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="amortiguadores_d" name="amortiguadores_d" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_amortiguadores_d"></td>
+                  </tr>
+                  <tr>
+                    <td class="br-1">Traseros</td>
+                    <td class="br-1 g"><input type="radio" formControlName="amortiguadores_t" name="amortiguadores_t" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="amortiguadores_t" name="amortiguadores_t" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="amortiguadores_t" name="amortiguadores_t" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_amortiguadores_t"></td>
+                  </tr>
+                  <tr style="border: 1px solid #9e9e9e;">
+                    <td class="br-1">Bridas</td>
+                    <td class="br-1 g"><input type="radio" formControlName="bridas" name="bridas" value="bien"></td>
+                    <td class="br-1 y"><input type="radio" formControlName="bridas" name="bridas" value="atencion"></td>
+                    <td class="br-1 r"><input type="radio" formControlName="bridas" name="bridas" value="mal"></td>
+                    <td class="br-1"><input type="text" formControlName="d_bridas"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="page">
+            <div class="inner">
+              <div class="row">
+                <div class="col s4">
+                  <img src="assets/logo.png" alt="" style="width: 60%;">
+                </div>
+                <div class="col s4">
+                  <div class="datos">
+                    <!-- <h6 *ngIf="!myForm.value.presupuesto" style="font-weight: 600; margin: 0;">NOTA DE VENTA</h6>-->
+                    <h6 style="font-weight: 600; margin: 0;">INSPECCIÓN DE AUTO</h6>
+                    <h6 style="font-weight: 600; margin-top: 0 !important; margin-bottom: 0 !important;">MULTISERVICIO SANCHEZ</h6>
+                    <p>Manantiales de Morelia No. 58-A <span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;">location_on</span></p>
+                    <p>Col. Campestre Los Manantiales</p>
+                    <p>Esq. Libramiento Sur CP. 58186 Morelia Mich.</p>
+                    <div style="display:inline-flex;">
+                      <div>
+                        <p>Tel. 01 (443) 316-13-17 <span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;">phone</span></p></div>
+                      <!-- <div>
+                        <img style="height: 1.3rem; padding-left: 0.1rem;" src="https://img.icons8.com/color/48/undefined/whatsapp--v1.png"/>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col s4" style="font-size: 0.7rem; font-weight: 600;">
+                  <div class="row">
+                    <div class="col s8 right-align" style=" padding-right: 0;">
+                      FOLIO:
+                    </div>
+                    <div class="col s4">
+                      <input type="text" id="orden" formControlName="orden" class="right-align" style="height: 1rem; color: red; font-size: .8rem; font-weight: 700; border-bottom: 0;" readonly>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col s3"></div>
+                    <div class="col s2 g">
+                      <input type="checkbox" id="" checked disabled>
+                    </div>
+                    <div class="col s7">
+                      BUEN ESTADO
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col s3"></div>
+                    <div class="col s2 y">
+                      <input type="checkbox" id="" checked disabled>
+                    </div>
+                    <div class="col s7">
+                      REQUIERE ATENCIÓN
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col s3"></div>
+                    <div class="col s2 r">
+                      <input type="checkbox" id="" checked disabled>
+                    </div>
+                    <div class="col s7">
+                      MAL ESTADO
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 1rem !important;">
+                <div class="col s12">
+                  <table class="tt1">
+                    <tr>
+                      <th style="width: 4cm;">MOTOR</th>
+                      <th style="width: 1cm;"></th>
+                      <th style="width: 1cm;"></th>
+                      <th style="width: 1cm;"></th>
+                      <th>OBSERVACIONES</th>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Nivel de Aceite</td>
+                      <td class="br-1 g"><input type="radio" formControlName="nivel_ac" name="nivel_ac" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="nivel_ac" name="nivel_ac" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="nivel_ac" name="nivel_ac" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_nivel_ac"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Nivel de Anticongelante</td>
+                      <td class="br-1 g"><input type="radio" formControlName="nivel_an" name="nivel_an" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="nivel_an" name="nivel_an" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="nivel_an" name="nivel_an" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_nivel_an"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Nivel de Aceite de Dirección Hidráulica</td>
+                      <td class="br-1 g"><input type="radio" formControlName="nivel_adh" name="nivel_adh" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="nivel_adh" name="nivel_adh" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="nivel_adh" name="nivel_adh" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_nivel_adh"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Nivel de Aceite de Transmisión Automática</td>
+                      <td class="br-1 g"><input type="radio" formControlName="nivel_ata" name="nivel_ata" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="nivel_ata" name="nivel_ata" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="nivel_ata" name="nivel_ata" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_nivel_ata"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Bandas</td>
+                      <td class="br-1 g"><input type="radio" formControlName="bandas" name="bandas" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="bandas" name="bandas" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="bandas" name="bandas" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_bandas"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Poleas</td>
+                      <td class="br-1 g"><input type="radio" formControlName="poleas" name="poleas" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="poleas" name="poleas" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="poleas" name="poleas" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_poleas"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Soportes</td>
+                      <td class="br-1 g"><input type="radio" formControlName="soportes" name="soportes" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="soportes" name="soportes" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="soportes" name="soportes" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_soportes"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Mangueras</td>
+                      <td class="br-1 g"><input type="radio" formControlName="mangueras" name="mangueras" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="mangueras" name="mangueras" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="mangueras" name="mangueras" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_mangueras"></td>
+                    </tr>
+                    <tr>
+                      <td class="br-1">Condición de Llantas</td>
+                      <td class="br-1 g"><input type="radio" formControlName="llantas" name="llantas" value="bien"></td>
+                      <td class="br-1 y"><input type="radio" formControlName="llantas" name="llantas" value="atencion"></td>
+                      <td class="br-1 r"><input type="radio" formControlName="llantas" name="llantas" value="mal"></td>
+                      <td class="br-1"><input type="text" formControlName="d_llantas"></td>
+                    </tr>                    
+                  </table>
+                </div>
+              </div>
+              <div class="row" style="margin: .75rem .75rem 0 .75rem;">          
+                <div class="col s12 center-align grey" style="padding: .3em 0; font-weight: 700; color: white;">
+                  COMENTARIOS                   
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                    <textarea name="" rows="5" formControlName="comentarios" style="height: 7rem; resize: none; padding: 0.2rem;"></textarea>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 2rem;">
+                <div class="col s12">
+                      <p style="font-size: 0.85rem; text-align: justify;">
+                        Los servicios marcados como <b>"requiere atención"</b> son los servicios que nuestros especialistas detectaron que están cerca de terminar su vida útil y es desición del cliente realizar o no estos servicios. <br><br>
+                        Los servicios marcados como <b>"mal estado"</b> son los servicios que nuestros especialistas detectaron que requieren atención inmediata por seguridad del conductor y quienes lo acompañan. <br><br>
+                        Estoy enterado de lo manifestado en la inspección presente, <b>deslindando de toda responsabilidad</b> a Multiservicios Sánchez de Morelia toda vez que se me han hecho saber las consecuencias de no atender los servicios recomendados.
+                        </p>
+                </div>
+              </div>
+              <div class="foot_">
+                <div class="row" style="margin-bottom: 1.2rem !important;">
+                <div class="col s12">
+                  <div class="signature">
+                    <div id="contSign" onclick="btn_click()">
+                      <!-- <img src="" id="imgSign" (load)="imgChanged($event)"> -->
+                      <img src="{{myForm.value.firma1}}" id="imgSign" (load)="imgChanged($event)">
+                      <!-- <img src="" id="imgSign"> -->
+                    </div>
+                    <hr>
+                    Firma de conformidad <br>
+                    {{ myForm.value.nombre }}
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+        </div>
+      </section>
+      <div class="no-print" id="printBtn">
+        <div class="iconos">
+          <button>
+            <span class="material-icons" style="font-size: 2.8rem;" onclick="window.print()">print</span>
+          </button>
+          <button (click)="submitSurveyData()" [routerLink]="['/inspeccion']" [disabled]="!myForm.valid" style="cursor: pointer;">
+            <span class="material-icons" style="font-size: 2.8rem; color: #0d47a1;">save</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+

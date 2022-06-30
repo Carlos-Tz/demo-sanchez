@@ -61,6 +61,9 @@ import { NewNotaComponent } from './admin/new-nota/new-nota.component';
 import { NewOrdenComponent } from './admin/new-orden/new-orden.component';
 import { EditOrdenComponent } from './admin/edit-orden/edit-orden.component';
 import { EditNotaComponent } from './admin/edit-nota/edit-nota.component';
+import { InspeccionComponent } from './admin/inspeccion/inspeccion.component';
+import { NewInspeccionComponent } from './admin/new-inspeccion/new-inspeccion.component';
+import { EditInspeccionComponent } from './admin/edit-inspeccion/edit-inspeccion.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -97,7 +100,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     NewNotaComponent,
     NewOrdenComponent,
     EditOrdenComponent,
-    EditNotaComponent
+    EditNotaComponent,
+    InspeccionComponent,
+    NewInspeccionComponent,
+    EditInspeccionComponent
   ],
   imports: [
     BrowserModule,
