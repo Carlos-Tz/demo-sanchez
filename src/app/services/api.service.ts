@@ -6,6 +6,7 @@ import { Nota } from '../models/nota';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Inspeccion } from '../models/inspeccion';
+import { Ticket } from '../models/ticket';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,12 @@ export class ApiService {
 
   lastOrden: number = 0;
   formsList: AngularFireList<any>;
+  ticketsList: AngularFireList<any>;
   formObject: AngularFireObject<any>;
   lastOrdenRef: Observable<any[]>;
   lastNotaRef: Observable<any[]>;
   lastInspeccionRef: Observable<any[]>;
+  lastTicketRef: Observable<any[]>;
   /* public callList: AngularFireList<any>; */
   public ordenList: AngularFireList<any>;
   public notaList: AngularFireList<any>;
@@ -25,7 +28,12 @@ export class ApiService {
   public ordenObject: AngularFireObject<any>;
   public notaObject: AngularFireObject<any>;
   public inspeccionObject: AngularFireObject<any>;
+  public ticketObject: AngularFireObject<any>;
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+
+  AddTicket(ticket: object) {
+    this.ticketsList.push(ticket as Ticket);
+  }
 
   AddForm(form: object) {
     this.formsList.push(form as Form);
@@ -41,6 +49,11 @@ export class ApiService {
 
   AddInspeccion(inspeccion: object) {
     this.inspeccionList.push(inspeccion as Inspeccion);
+  }
+
+  GetTicketsList() {
+    this.ticketsList = this.db.list('sanchez/ticket-list')
+    return this.ticketsList;
   }
 
   GetFormsList() {
@@ -63,6 +76,11 @@ export class ApiService {
   GetInspeccionesList() {
     this.inspeccionList = this.db.list('sanchez/inspeccion-list');
     return this.inspeccionList;
+  }
+
+  GetTicket(key: string) {
+    this.ticketObject = this.db.object('sanchez/ticket-list/' + key);
+    return this.ticketObject;
   }
 
   GetForm(key: string) {
@@ -159,5 +177,10 @@ export class ApiService {
   getLastInspeccion(){
     this.lastInspeccionRef = this.db.list('sanchez/inspeccion-list/', ref => ref.limitToLast(1)).valueChanges();
     return this.lastInspeccionRef;
+  }
+
+  getLastTicket(){
+    this.lastTicketRef = this.db.list('sanchez/ticket-list/', ref => ref.limitToLast(1)).valueChanges();
+    return this.lastTicketRef;
   }
 }

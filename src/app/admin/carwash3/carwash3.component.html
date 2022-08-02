@@ -1,0 +1,86 @@
+<form [formGroup]="myForm" novalidate autocomplete="off">
+
+<div id="paquete3_">
+    <div class="row">
+      <div class="col s5" style="padding-left: 0;">
+        <!-- <img src="assets/logo1.png" alt="" style="width: 55px;"> -->
+        <p style="font-size: 1rem; text-align: center;">MULTISERVICIO</p>
+        <p style="font-size: 1rem; text-align: center;">SANCHEZ</p>
+      </div>
+      <div class="col s7" style="padding-right: 0">
+        <h6 style="text-align: right;">PAQUETE 3</h6>
+      </div>
+    </div>
+    <p [ngStyle]="{'display': btn}">Folio: <input type="text" id="orden" formControlName="orden" style="height: 1rem; font-size: .8rem; font-weight: 700; border-bottom: 0; width: 50%;" readonly></p>
+    <span id="fol" [ngStyle]="{'display': btn1}" style="font-weight: 700;"></span>
+    <p id="fecha3"></p>
+    <input type="text" id="fecha" formControlName="fecha" class="right-align" style="height: 1rem; font-size: .8rem; font-weight: 700; border-bottom: 0;" readonly hidden>
+      <table border="1" class="tab_" style="border: 1px solid #555;">
+          <tr>
+              <td><img src="https://img.icons8.com/external-smashingstocks-mixed-smashing-stocks/68/000000/external-carwash-car-services-smashingstocks-mixed-smashing-stocks.png"/></td>
+              <td><p>LAVADO EXTERIOR</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/ios/50/000000/wheel.png"/></td>
+              <td><p>RINES</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/external-phatplus-lineal-phatplus/64/000000/external-hand-hand-washing-phatplus-lineal-phatplus.png"/></td>
+              <td><p>ARMOR ALL</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/external-outline-satawat-anukul/64/000000/external-furnitureandhousehold-furniture-and-household-outline-outline-satawat-anukul-41.png"/></td>
+              <td><p>ASPIRADO</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/ios/50/000000/update-left-rotation.png"/></td>
+              <td><p>SECADO</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/ios/50/000000/wind--v1.png"/></td>
+              <td><p>AROMA</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/ios/50/000000/automatic-car-wash.png"/></td>
+              <td><p>ESPUMA TRICOLOR</p></td>
+          </tr>
+          <tr>
+              <td><img src="https://img.icons8.com/ios/50/000000/carpool.png"/></td>
+              <td><p>CERA LÍQUIDA</p></td>
+          </tr>
+      </table>
+      <table border="1" class="tab_2">
+        <tr>
+            <td><input type="radio" name="tipo" value="1" formControlName="tipo" required></td>
+            <td><p>AUTO </p><p class="p_r">$110.00</p> </td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="tipo" value="2" formControlName="tipo" required></td>
+            <td><p>PICKUP </p><p class="p_r">$120.00</p> </td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="tipo" value="3" formControlName="tipo" required></td>
+            <td><p>SUB </p><p class="p_r">$140.00</p> </td>
+          </tr>
+      </table>
+      <div class="row" style="text-align: center; margin-top: 1rem;">
+        <span style="font-size: 1rem; font-weight: 700;">SE RECOMIENDA</span>
+        <p style="font-size: 0.7rem; text-align: justify;"><b>NO</b> dejar objetos de valor dentro del vehículo para facilitar la limpieza (laptops, mochilas, dinero, tarjetas, etc).</p>
+        <p style="font-size: 0.7rem; text-align: justify;"><b>NO</b> nos hacemos responsables por accesorios del vehículo que estén previamente averiados (espejos, antenas, molduras, fascias, etc)</p>
+      </div><br>
+      <br>
+      <hr>
+      <hr>
+  
+  </div>
+  <div class="no-print" id="printBtn">
+    <div class="iconos">
+      <button [routerLink]="['/list-carwash']" style="cursor: pointer;" [ngStyle]="{'display': btn1}">
+        <span class="material-icons" style="font-size: 2.8rem; color:#0d47a1;">home</span>
+      </button>
+      <button (click)="submitSurveyData()" onclick="window.print()" [disabled]="!myForm.valid" style="cursor: pointer;" [ngStyle]="{'display': btn}">
+        <span class="material-icons" style="font-size: 2.8rem; color: #0d47a1;">print</span>
+      </button>
+    </div>
+  </div>
+</form>

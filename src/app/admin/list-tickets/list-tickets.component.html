@@ -1,0 +1,88 @@
+<!-- <app-navbar [save]="save"></app-navbar> -->
+<div style="overflow: hidden;" class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row no-print" style="margin: 1rem;">
+                        <div class="col s12 l2"></div>
+                        <div class="col s12 l6" style="padding: 1rem;">
+                            <p class="card-title h5" style="text-align: center;">
+                                Tickets
+                            </p>
+                        </div>
+                        <div class="col s12 l4" style="padding: 1rem;">
+                            <button mat-button class="btn" [routerLink]="['/carwash']"><span class="material-icons" style="vertical-align: middle;">add</span> Nuevo</button>
+                        </div>
+                    </div>
+                    <div *ngIf="data" style="margin:1rem;">
+                        <div class="row no-print">
+                            <div class="col s4">
+                                <mat-form-field>
+                                  <input matInput type="date" (change)="doFilter($event.target.value)">
+                                  <!-- <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Buscar"> -->
+                                </mat-form-field>
+                            </div>
+                            <!-- <div class="col s4"></div> -->
+                        </div>
+                        <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+                        <!-- <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="fecha" matSortDirection="desc" matSortDisableClear> -->
+                        <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="orden" matSortDirection="desc" matSortDisableClear (matSortChange)="sortData($event)">
+
+                            <ng-container matColumnDef="orden">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header >Folio</mat-header-cell>
+                                <mat-cell *matCellDef="let element">{{element.orden}}
+                                </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="paquete">
+                                <mat-header-cell *matHeaderCellDef class="pad-l">Paquete</mat-header-cell>
+                                <mat-cell *matCellDef="let element" class="pad-l" style="display: flex; justify-content:space-between; ">
+                                    {{element.paquete}}
+                                    <span *ngIf="element.paquete=='Express' && element.tipo==1" style="padding: 0 1rem;"> AUTO - $50.00</span>
+                                    <span *ngIf="element.paquete=='Express' && element.tipo==2" style="padding: 0 1rem;"> PICKUP - $60.00</span>
+                                    <span *ngIf="element.paquete=='Express' && element.tipo==3" style="padding: 0 1rem;"> SUB - $70.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 1' && element.tipo==1" style="padding: 0 1rem;"> AUTO - $70.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 1' && element.tipo==2" style="padding: 0 1rem;"> PICKUP - $80.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 1' && element.tipo==3" style="padding: 0 1rem;"> SUB - $100.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 2' && element.tipo==1" style="padding: 0 1rem;"> AUTO - $90.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 2' && element.tipo==2" style="padding: 0 1rem;"> PICKUP - $100.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 2' && element.tipo==3" style="padding: 0 1rem;"> SUB - $120.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 3' && element.tipo==1" style="padding: 0 1rem;"> AUTO - $110.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 3' && element.tipo==2" style="padding: 0 1rem;"> PICKUP - $120.00</span>
+                                    <span *ngIf="element.paquete=='Paquete 3' && element.tipo==3" style="padding: 0 1rem;"> SUB - $140.00</span>
+                                </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="fecha">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header class="show-h pad-l">Fecha</mat-header-cell>
+                                <mat-cell *matCellDef="let element" class="show-h pad-l">{{element.fecha}}</mat-cell>
+                            </ng-container>
+
+                            <!-- <ng-container matColumnDef="action">
+                                <mat-header-cell *matHeaderCellDef class="pad-l"> Acción </mat-header-cell>
+                                <mat-cell *matCellDef="let element; let i = index;" class="pad-l">
+
+                                    <button class="btn  btn-small" [routerLink]="['/editar-nota/', element.$key]"><span class="material-icons">edit</span></button>
+                                    <button class="btn red darken-1 btn-small" (click)="deleteNota(element.$key)"><span class="material-icons">delete</span></button>
+                                </mat-cell>
+                            </ng-container> -->
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons class="no-print"></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="no-print" id="printBtn">
+        <div class="iconos">
+          <button onclick="window.print()" style="cursor: pointer;">
+            <span class="material-icons" style="font-size: 2.8rem; color: #0d47a1;">print</span>
+          </button>
+        </div>
+      </div>
+</div>
+

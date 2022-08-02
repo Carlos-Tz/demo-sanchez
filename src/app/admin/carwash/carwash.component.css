@@ -1,0 +1,74 @@
+/* html, body {
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+} */
+
+.back {
+    /* background: linear-gradient(0deg,rgba(0,0,0,.5333333333333333) 30%,hsla(0,0%,100%,.26666666666666666)),no-repeat 50%/cover url('../../../assets/bg.png');
+    background-size: cover; */
+    /* width: 100%; */
+    /* height: calc(100vh - 64px); */
+    /* height: 100vh; */
+}
+.back h3 {
+    text-align: center;
+    color: white;
+    text-shadow: 1.5px 1.5px 3px black;
+    margin: 0;
+    /* padding: 3rem; */
+    font-size: 2rem;
+}
+.card {
+    background: hsla(0,0%,80%,.9);
+    padding: 1rem;
+}
+.card a:hover {
+    background: hsla(0,0%,60%,.85);
+}
+
+.back a span {
+    vertical-align: middle;
+    font-size: 28px;
+}
+
+a {
+    color: black;
+    text-align: center;
+}
+
+.btn-large {
+    background-color: transparent;
+    width: 100%;
+}
+
+.tab_ {
+    border: 1px solid #555;
+    font-size: 1.2rem;
+}
+
+.tab_ td img {
+    width: 25px;
+}
+
+.tab_ p {
+    margin: 0;
+    font-size: .9rem;
+}
+
+.tab_2 {
+    border: 1px solid #555;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tab_2 span {
+    color: white;
+    background-color: red;
+    width: 100%;
+}
+
+.p_r {
+    background-color: red;
+    color: white;
+}

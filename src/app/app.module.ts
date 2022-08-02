@@ -64,6 +64,12 @@ import { EditNotaComponent } from './admin/edit-nota/edit-nota.component';
 import { InspeccionComponent } from './admin/inspeccion/inspeccion.component';
 import { NewInspeccionComponent } from './admin/new-inspeccion/new-inspeccion.component';
 import { EditInspeccionComponent } from './admin/edit-inspeccion/edit-inspeccion.component';
+import { CarwashComponent } from './admin/carwash/carwash.component';
+import { CarwasheComponent } from './admin/carwashe/carwashe.component';
+import { Carwash1Component } from './admin/carwash1/carwash1.component';
+import { Carwash2Component } from './admin/carwash2/carwash2.component';
+import { Carwash3Component } from './admin/carwash3/carwash3.component';
+import { ListTicketsComponent } from './admin/list-tickets/list-tickets.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -103,7 +109,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EditNotaComponent,
     InspeccionComponent,
     NewInspeccionComponent,
-    EditInspeccionComponent
+    EditInspeccionComponent,
+    CarwashComponent,
+    CarwasheComponent,
+    Carwash1Component,
+    Carwash2Component,
+    Carwash3Component,
+    ListTicketsComponent
   ],
   imports: [
     BrowserModule,

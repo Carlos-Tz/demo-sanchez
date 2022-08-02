@@ -1,0 +1,30 @@
+.tab_ {
+    border: 1px solid #555;
+    font-size: 1.2rem;
+}
+
+.tab_ td img {
+    width: 25px;
+}
+
+.tab_ p {
+    margin: 0;
+    font-size: .9rem;
+}
+
+.tab_2 {
+    border: 1px solid #555;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tab_2 span {
+    color: white;
+    background-color: red;
+    width: 100%;
+}
+
+.p_r {
+    background-color: red;
+    color: white;
+}

@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PanelComponent } from './admin/panel/panel.component';
 import { NewRegisterComponent } from './admin/new-register/new-register.component';
 import { LoginComponent } from './admin/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { SecureInnerPagesGuard } from './services/secure-inner-pages.guard';
-import { SpinnerComponent } from './admin/spinner/spinner.component';
 import { EditRegisterComponent } from './admin/edit-register/edit-register.component';
-import { CalendarComponent } from './admin/calendar/calendar.component';
-import { PhotosComponent } from './admin/photos/photos.component';
 import { MainComponent } from './admin/main/main.component';
-import { EditCasaComponent } from './admin/photos/edit-casa/edit-casa.component';
-import { PrintCasaComponent } from './admin/photos/print-casa/print-casa.component';
 import { ClientesComponent } from './admin/clientes/clientes.component';
 import { NotasComponent } from './admin/notas/notas.component';
 import { OrdenesComponent } from './admin/ordenes/ordenes.component';
@@ -22,6 +16,12 @@ import { EditNotaComponent } from './admin/edit-nota/edit-nota.component';
 import { InspeccionComponent } from './admin/inspeccion/inspeccion.component';
 import { NewInspeccionComponent } from './admin/new-inspeccion/new-inspeccion.component';
 import { EditInspeccionComponent } from './admin/edit-inspeccion/edit-inspeccion.component';
+import { CarwashComponent } from './admin/carwash/carwash.component';
+import { CarwasheComponent } from './admin/carwashe/carwashe.component';
+import { Carwash1Component } from './admin/carwash1/carwash1.component';
+import { Carwash2Component } from './admin/carwash2/carwash2.component';
+import { Carwash3Component } from './admin/carwash3/carwash3.component';
+import { ListTicketsComponent } from './admin/list-tickets/list-tickets.component';
 
 
 const routes: Routes = [
@@ -31,14 +31,16 @@ const routes: Routes = [
   {path: 'notas', component: NotasComponent, canActivate: [AuthGuard]},
   {path: 'ordenes', component: OrdenesComponent, canActivate: [AuthGuard]},
   {path: 'inspeccion', component: InspeccionComponent, canActivate: [AuthGuard]},
-  /* {path: 'panel', component: PanelComponent, canActivate: [AuthGuard]}, */
-  /* {path: 'spinner', component: SpinnerComponent}, */
+  {path: 'carwash', component: CarwashComponent, canActivate: [AuthGuard]},
+  {path: 'list-carwash', component: ListTicketsComponent, canActivate: [AuthGuard]},
+  {path: 'carwashe', component: CarwasheComponent, canActivate: [AuthGuard]},
+  {path: 'carwash1', component: Carwash1Component, canActivate: [AuthGuard]},
+  {path: 'carwash2', component: Carwash2Component, canActivate: [AuthGuard]},
+  {path: 'carwash3', component: Carwash3Component, canActivate: [AuthGuard]},
   {path: 'nuevo-cliente', component: NewRegisterComponent, canActivate: [AuthGuard]},
   {path: 'nueva-orden', component: NewOrdenComponent, canActivate: [AuthGuard]},
   {path: 'nueva-nota', component: NewNotaComponent, canActivate: [AuthGuard]},
   {path: 'nueva-inspeccion', component: NewInspeccionComponent, canActivate: [AuthGuard]},
-  /* {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]}, */
-  /* {path: 'photos', component: PhotosComponent, canActivate: [AuthGuard]}, */
   {path: 'editar-cliente/:key', component: EditRegisterComponent, canActivate: [AuthGuard]},
   {path: 'editar-orden/:key', component: EditOrdenComponent, canActivate: [AuthGuard]},
   {path: 'editar-nota/:key', component: EditNotaComponent, canActivate: [AuthGuard]},
