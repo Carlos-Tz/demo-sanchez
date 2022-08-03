@@ -43,7 +43,7 @@ export class Carwash2Component implements OnInit, AfterViewInit {
         this.myForm.patchValue({orden: String(1).padStart(6, '0')});      
       }
     });
-    this.fecha = fechaObj.format(new Date(), 'YYYY[-]MM[-]D [/] hh:mm:ss a');
+    this.fecha = fechaObj.format(new Date(), 'YYYY[-]MM[-]DD [/] hh:mm:ss a');
     $('#fecha2').html('Entrada: '+ this.fecha);
     this.myForm.patchValue({ fecha: this.fecha });
   }

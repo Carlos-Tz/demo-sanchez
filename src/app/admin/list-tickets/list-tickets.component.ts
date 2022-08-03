@@ -18,6 +18,7 @@ import { Ticket } from 'src/app/models/ticket';
 export class ListTicketsComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<Ticket>();
   save = 2;
+  total: number;
   Ticket: Ticket[];
   data = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -82,8 +83,25 @@ export class ListTicketsComponent implements OnInit, AfterViewInit {
   }
 
   public doFilter = (value: string) => {
+    this.total = 0;
     //console.log(value);
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+    this.dataSource.filteredData.forEach((val) => {
+      if(val.paquete == 'Express' && val.tipo == 1) this.total += 50;
+      if(val.paquete == 'Express' && val.tipo == 2) this.total += 60;
+      if(val.paquete == 'Express' && val.tipo == 3) this.total += 70;
+      if(val.paquete == 'Paquete 1' && val.tipo == 1) this.total += 70;
+      if(val.paquete == 'Paquete 1' && val.tipo == 2) this.total += 80;
+      if(val.paquete == 'Paquete 1' && val.tipo == 3) this.total += 100;
+      if(val.paquete == 'Paquete 2' && val.tipo == 1) this.total += 90;
+      if(val.paquete == 'Paquete 2' && val.tipo == 2) this.total += 100;
+      if(val.paquete == 'Paquete 2' && val.tipo == 3) this.total += 120;
+      if(val.paquete == 'Paquete 3' && val.tipo == 1) this.total += 110;
+      if(val.paquete == 'Paquete 3' && val.tipo == 2) this.total += 120;
+      if(val.paquete == 'Paquete 3' && val.tipo == 3) this.total += 140;
+    });
+    //console.log(this.total);
+    //this.getTotal();
   }
 
 /*   async deleteNota(key: string){

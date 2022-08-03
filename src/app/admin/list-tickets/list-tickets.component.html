@@ -51,10 +51,12 @@
                                     <span *ngIf="element.paquete=='Paquete 3' && element.tipo==2" style="padding: 0 1rem;"> PICKUP - $120.00</span>
                                     <span *ngIf="element.paquete=='Paquete 3' && element.tipo==3" style="padding: 0 1rem;"> SUB - $140.00</span>
                                 </mat-cell>
+                                <!-- <mat-cell-footer *matFooterCellDef>Total:</mat-cell-footer> -->
                             </ng-container>
                             <ng-container matColumnDef="fecha">
                                 <mat-header-cell *matHeaderCellDef mat-sort-header class="show-h pad-l">Fecha</mat-header-cell>
                                 <mat-cell *matCellDef="let element" class="show-h pad-l">{{element.fecha}}</mat-cell>
+                                <!-- <mat-footer-cell *matFooterCellDef>{{total}}</mat-footer-cell> -->
                             </ng-container>
 
                             <!-- <ng-container matColumnDef="action">
@@ -69,9 +71,13 @@
                             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
                             <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+                            <!-- <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row> -->
 
                         </mat-table>
                         <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons class="no-print"></mat-paginator>
+                        <div class="row">
+                            <div class="col s4 offset-s8" style="font-size: 1rem; margin-bottom: 0.5rem;">Total: {{ total | currency }}</div>
+                        </div>
                     </div>
                 </div>
             </div>

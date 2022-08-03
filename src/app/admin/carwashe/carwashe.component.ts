@@ -48,7 +48,7 @@ export class CarwasheComponent implements OnInit, AfterViewInit {
         //$('#fol').html(this.myForm.get('orden').value);
       }
     });
-    this.fecha = fechaObj.format(new Date(), 'YYYY[-]MM[-]D [/] hh:mm:ss a');
+    this.fecha = fechaObj.format(new Date(), 'YYYY[-]MM[-]DD [/] hh:mm:ss a');
     $('#fechae').html('Entrada: '+ this.fecha);
     this.myForm.patchValue({ fecha: this.fecha });
   }
