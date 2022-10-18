@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { Form } from 'src/app/models/form';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatInput } from '@angular/material/input';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Nota } from 'src/app/models/nota';
 import { ToastrService } from 'ngx-toastr';
 import { Ticket } from 'src/app/models/ticket';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-list-tickets',
@@ -32,7 +30,7 @@ export class ListTicketsComponent implements OnInit, AfterViewInit {
     'fecha'
   ];
   constructor(
-    public api: ApiService, private matDialog: MatDialog, public toastr: ToastrService
+    public api: ApiService, private matDialog: MatDialog, public toastr: ToastrService, public authService: AuthService,
   ) { }
 
   ngOnInit() {
